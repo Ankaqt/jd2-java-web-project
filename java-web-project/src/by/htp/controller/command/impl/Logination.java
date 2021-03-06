@@ -45,7 +45,7 @@ public class Logination implements Command {
 
 		} catch (ServiceException e) {
 			response.sendRedirect("Controller?command=gotosigninpage&message=Something went wrong. Try later.");
-			System.out.println("Error1");
+			System.out.println("Error");
 
 		}
 
