@@ -1,4 +1,4 @@
-package by.htp.filter;
+package by.htp.controller.filter;
 
 import java.io.IOException;
 

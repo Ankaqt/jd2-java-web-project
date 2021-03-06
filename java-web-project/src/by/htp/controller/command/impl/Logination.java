@@ -35,7 +35,6 @@ public class Logination implements Command {
 			if (user == null) {
 				response.sendRedirect(
 						"Controller?command=gotosigninpage&message=You entered an incorrect username or password. Try again.");
-				System.out.println("Error");
 				return;
 			}
 
@@ -45,8 +44,7 @@ public class Logination implements Command {
 			response.sendRedirect("Controller?command=gotomainpage&message=Welcome");
 
 		} catch (ServiceException e) {
-			response.sendRedirect(
-					"Controller?command=gotosigninpage&message=You entered an incorrect username or password. Try again.");
+			response.sendRedirect("Controller?command=gotosigninpage&message=Something went wrong. Try later.");
 			System.out.println("Error1");
 
 		}
