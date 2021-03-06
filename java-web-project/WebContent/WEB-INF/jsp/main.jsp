@@ -19,8 +19,7 @@
 					</select>
 				</div>
 				<a href="Controller?command=gotoindexpage"><img alt="logo"
-					src="css/img/pngwing.png"
-					width="183px" height="143"></a>
+					src="css/img/pngwing.png" width="183px" height="143"></a>
 			</div>
 			<ul class="links">
 				<li><a href="#">Home</a></li>
@@ -36,31 +35,9 @@
 	</div>
 	<main>
 		<h1 align="center">
-			Welcome to SURFHOME,
-			<%
-		String message = (String) request.getAttribute("username");
-
-		if (message == null) {
-			message = (String) request.getParameter("username");
-		}
-
-		if (message != null) {
-			out.write(message);
-
-		}
-		%>
-			-
-			<%
-		String message1 = (String) request.getAttribute("role");
-
-		if (message1 == null) {
-			message1 = (String) request.getParameter("role");
-		}
-
-		if (message1 != null) {
-			out.write(message1);
-		}
-		%>
+			<c:if test="${user != null}">
+				<p>Welcome to SURFHOME, ${user.name} - ${user.role}</p>
+			</c:if>
 		</h1>
 		<div style="text-align: center;">
 			<h1 class="title">NEWS</h1>
@@ -80,7 +57,7 @@
 			</c:forEach>
 		</div>
 		<h4>
-			<c:if test="${sessionScope.role eq \"admin\"}">
+			<c:if test="${sessionScope.user.role eq \"admin\"}">
 				<a href="Controller?command=gotoaddnewspage" class="addNews">Add
 					news</a>
 			</c:if>
@@ -109,9 +86,8 @@
 				<h3>SOCIAL NETWORKS</h3>
 			</div>
 			<div class="footer-logo">
-				<a href="/"><img
-					src="css/img/pngwing.png"
-					width="100px" height="80" alt="Surfhome logo"></a>
+				<a href="/"><img src="css/img/pngwing.png" width="100px"
+					height="80" alt="Surfhome logo"></a>
 				<p>© 2021 SURFHOME| All Rights Reserved</p>
 			</div>
 		</div>

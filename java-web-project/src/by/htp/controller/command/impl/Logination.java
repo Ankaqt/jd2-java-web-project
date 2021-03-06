@@ -41,8 +41,7 @@ public class Logination implements Command {
 
 			HttpSession session = request.getSession(true);
 			session.setAttribute("auth", true);
-			session.setAttribute("username", username);
-			session.setAttribute("role", user.getRole());
+			session.setAttribute("user", user);
 			response.sendRedirect("Controller?command=gotomainpage&message=Welcome");
 
 		} catch (ServiceException e) {

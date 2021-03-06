@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +19,7 @@
 					</select>
 				</div>
 				<a href="Controller?command=gotoindexpage"><img alt="logo"
-					src="css/img/pngwing.png"
-					width="183px" height="143"></a>
+					src="css/img/pngwing.png" width="183px" height="143"></a>
 			</div>
 			<ul class="links">
 				<li><a href="#">Home</a></li>
@@ -40,15 +40,10 @@
 				<span class="sign-in">Sign in</span>
 			</h1>
 			<div class="message">
-				<%
-				String message = (String) request.getParameter("message");
-
-				if (message != null) {
-					out.write(message);
-				}
-				%>
+				<c:forEach var="message" items="${param.message}">
+					<c:out value="${message}" />
+				</c:forEach>
 			</div>
-
 			<p class="float">
 				<label for="login">Username</label> <input type="text" name="name"
 					value="" placeholder="Enter username" required
@@ -91,9 +86,8 @@
 				<h3>SOCIAL NETWORKS</h3>
 			</div>
 			<div class="footer-logo">
-				<a href="/"><img
-					src="css/img/pngwing.png"
-					width="100px" height="80" alt="Surfhome logo"></a>
+				<a href="/"><img src="css/img/pngwing.png" width="100px"
+					height="80" alt="Surfhome logo"></a>
 				<p>© 2021 SURFHOME| All Rights Reserved</p>
 			</div>
 		</div>

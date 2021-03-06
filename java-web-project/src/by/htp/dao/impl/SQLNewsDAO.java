@@ -14,13 +14,19 @@ import by.htp.bean.News;
 import by.htp.dao.DAOException;
 import by.htp.dao.NewsDAO;
 
+import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_ADD_NEWS;
+import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_SELECT_ALL_NEWS;
+import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_DELETE_NEWS;
+import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_SELECT_NEWS_BY_ID;
+import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_UPDATE_NEWS;
+
 public class SQLNewsDAO implements NewsDAO {
 
-	public static final String SQL_QUERY_SELECT_ALL_NEWS = "SELECT * FROM news WHERE news_status ='active'";
-	public static final String SQL_QUERY_SELECT_NEWS_BY_ID = "SELECT * FROM news WHERE news_id = ?";
-	public static final String SQL_QUERY_UPDATE_NEWS = "UPDATE news SET news_title = ?, news_brief = ?, news_content = ? WHERE news_id = ?";
-	public static final String SQL_QUERY_DELETE_NEWS = "UPDATE news SET news_status ='inactive' WHERE news_id = ?";
-	public static final String SQL_QUERY_ADD_NEWS = "INSERT INTO news (news_title, news_brief, news_content, news_date) VALUES (?, ?, ?, ?)";
+	private static final String NEWS_ID = "news_id";
+	private static final String NEWS_TITLE = "news_title";
+	private static final String NEWS_BRIEF = "news_brief";
+	private static final String NEWS_CONTENT = "news_content";
+	private static final String NEWS_DATE = "news_date";
 
 	private String dbUrl = "jdbc:mysql://localhost:3307/news_management?useSSL=false&serverTimezone=UTC";
 	private String dbUname = "root";
@@ -68,11 +74,12 @@ public class SQLNewsDAO implements NewsDAO {
 			news = new ArrayList<News>();
 
 			while (rs.next()) {
-				int id = rs.getInt("news_id");
-				String title = rs.getString("news_title");
-				String brief = rs.getString("news_brief");
-				String content = rs.getString("news_content");
-				LocalDate date = rs.getDate("news_date").toLocalDate();
+				int id = rs.getInt(NEWS_ID);
+				String title = rs.getString(NEWS_TITLE);
+				String brief = rs.getString(NEWS_BRIEF);
+				String content = rs.getString(NEWS_CONTENT);
+				LocalDate date = rs.getDate(NEWS_DATE).toLocalDate();
+
 				News n = new News(id, title, brief, content, date);
 
 				news.add(n);
@@ -102,10 +109,10 @@ public class SQLNewsDAO implements NewsDAO {
 			rs = statement.executeQuery();
 
 			if (rs.next()) {
-				String title = rs.getString("news_title");
-				String brief = rs.getString("news_brief");
-				String content = rs.getString("news_content");
-				LocalDate date = rs.getDate("news_date").toLocalDate();
+				String title = rs.getString(NEWS_TITLE);
+				String brief = rs.getString(NEWS_BRIEF);
+				String content = rs.getString(NEWS_CONTENT);
+				LocalDate date = rs.getDate(NEWS_DATE).toLocalDate();
 
 				news = new News(id, title, brief, content, date);
 			}

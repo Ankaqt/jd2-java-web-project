@@ -37,7 +37,7 @@
 	</div>
 	<main>
 		<div class="news">
-			<c:if test="${sessionScope.role eq \"admin\"}">
+			<c:if test="${sessionScope.user.role eq \"admin\"}">
 				<form class="form" action="Controller" method="post">
 					<input type="hidden" name="command" value="saveeditednews" />
 					<c:set var="n" value="${requestScope.news}" />

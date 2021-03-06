@@ -38,7 +38,6 @@ public class SaveEditedNews implements Command {
 
 		System.out.println("Title:" + title);
 		System.out.println("Brief:" + brief);
-		System.out.println(id);
 
 		News news = new News(id, title, brief, content);
 

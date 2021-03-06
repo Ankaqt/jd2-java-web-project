@@ -37,13 +37,9 @@
 	</div>
 	<main>
 		<h1 align="center">
-			<%
-			String message = (String) request.getParameter("message");
-
-			if (message != null) {
-				out.write(message);
-			}
-			%>
+			<c:forEach var="message" items="${param.message}">
+				<c:out value="${message}" />
+			</c:forEach>
 		</h1>
 		<div class="news">
 			<c:set var="n" value="${requestScope.news}" />
@@ -55,7 +51,7 @@
 			<br /> ${n.content}
 			<h4>
 				<a href="Controller?command=gotomainpage" class="back">Back</a>
-				<c:if test="${sessionScope.role eq \"admin\"}">
+				<c:if test="${sessionScope.user.role eq \"admin\"}">
 					<a href="Controller?command=gotoeditnewspage&id=<c:out value="${n.id}" />"class="edit">Edit</a>
 				</c:if>
 			</h4>

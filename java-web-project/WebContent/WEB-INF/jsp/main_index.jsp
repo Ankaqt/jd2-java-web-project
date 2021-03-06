@@ -27,9 +27,8 @@
 					</select>
 				</div>
 				<a href="Controller?command=gotoindexpage"><img
-					alt="Surfhome logo"
-					src="css/img/pngwing.png"
-					width="183px" height="143"></a>
+					alt="Surfhome logo" src="css/img/pngwing.png" width="183px"
+					height="143"></a>
 			</div>
 			<ul class="links">
 				<li><a href="#">Home</a></li>
@@ -45,9 +44,7 @@
 	</div>
 	<main>
 		<div class="image">
-			<img alt=""
-				src="css/img/photo2.jpg"
-				width="1481.5px" height="600">
+			<img alt="" src="css/img/photo2.jpg" width="1481.5px" height="600">
 			<h2>
 				<span>If you're having a bad day, catch a wave</span>
 			</h2>
@@ -68,9 +65,13 @@
 		</div>
 		<div class="news">
 			<c:forEach var="n" items="${requestScope.news}">
-				<h1><span class="title1"><c:out value="${n.title}" /> </span></h1>
-				<br /><c:out value="${n.date}" />
-				<br /><c:out value="${n.brief}" />
+				<h1>
+					<span class="title1"><c:out value="${n.title}" /></span>
+				</h1>
+				<br />
+				<c:out value="${n.date}" />
+				<br />
+				<c:out value="${n.brief}" />
 			</c:forEach>
 		</div>
 	</main>
@@ -97,9 +98,8 @@
 				<h3>SOCIAL NETWORKS</h3>
 			</div>
 			<div class="footer-logo">
-				<a href="/"><img
-					src="css/img/pngwing.png"
-					width="100px" height="80" alt="Surfhome logo"></a>
+				<a href="/"><img src="css/img/pngwing.png" width="100px"
+					height="80" alt="Surfhome logo"></a>
 				<p>© 2021 SURFHOME| All Rights Reserved</p>
 			</div>
 		</div>

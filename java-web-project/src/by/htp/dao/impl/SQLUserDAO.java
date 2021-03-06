@@ -11,10 +11,16 @@ import by.htp.bean.RegistrationInfo;
 import by.htp.dao.DAOException;
 import by.htp.dao.UserDAO;
 
+import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_CREATE_USER;
+import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_SELECT_USER;
+
 public class SQLUserDAO implements UserDAO {
 
-	public static final String SQL_QUERY_SELECT_USER = "SELECT * from userinfo where userinfo_name=? and userinfo_password=?";
-	public static final String SQL_QUERY_CREATE_USER = "INSERT INTO userinfo(userinfo_name,userinfo_email,userinfo_phone,userinfo_password) VALUES(?,?,?,?)";
+	private static final String USER_ID = "userinfo_id";
+	private static final String USER_NAME = "userinfo_name";
+	private static final String USER_EMAIL = "userinfo_email";
+	private static final String USER_PHONE = "userinfo_phone";
+	private static final String USER_ROLE = "userinfo_role";
 
 	private String dbUrl = "jdbc:mysql://localhost:3307/news_management?useSSL=false&serverTimezone=UTC";
 	private String dbUname = "root";
@@ -62,11 +68,11 @@ public class SQLUserDAO implements UserDAO {
 
 			if (rs.next()) {
 				user = new User();
-				user.setId(rs.getInt("userinfo_id"));
-				user.setName(rs.getString("userinfo_name"));
-				user.setEmail(rs.getString("userinfo_email"));
-				user.setPhone(rs.getString("userinfo_phone"));
-				user.setRole(rs.getString("userinfo_role"));
+				user.setId(rs.getInt(USER_ID));
+				user.setName(rs.getString(USER_NAME));
+				user.setEmail(rs.getString(USER_EMAIL));
+				user.setPhone(rs.getString(USER_PHONE));
+				user.setRole(rs.getString(USER_ROLE));
 
 			}
 
