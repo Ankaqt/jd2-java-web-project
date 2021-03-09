@@ -39,6 +39,10 @@ public class ShowNews implements Command {
 			Integer id = Integer.valueOf(request.getParameter("id"));
 
 			News news = newsService.takeById(id);
+			
+			String url = request.getRequestURL() + "?" + request.getQueryString();
+
+			session.setAttribute("url", url);
 
 			request.setAttribute("username", session.getAttribute("username"));
 			request.setAttribute("news", news);

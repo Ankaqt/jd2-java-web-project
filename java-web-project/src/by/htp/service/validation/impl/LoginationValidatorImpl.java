@@ -7,8 +7,8 @@ import by.htp.service.validation.LoginationValidator;
 
 public class LoginationValidatorImpl implements LoginationValidator {
 
-	private Pattern patternUsername = Pattern.compile("[a-z0-9]{6,16}");
-	private Pattern patternPassword = Pattern.compile("[a-z0-9]{6,16}");
+	private Pattern patternUsername = Pattern.compile("[a-z0-9]{6,12}");
+	private Pattern patternPassword = Pattern.compile("[a-z0-9]{6,12}");
 
 	@Override
 	public boolean checkLogination(String username, String password) {

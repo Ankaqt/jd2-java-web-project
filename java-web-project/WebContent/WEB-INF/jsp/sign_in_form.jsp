@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+	pageEncoding="utf-8" import="java.util.List,by.htp.bean.News"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@include file="localization_file.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,24 +14,31 @@
 	<div class="wrap">
 		<div class="nav">
 			<div class="header">
-				<div class="select-style">
-					<select>
-						<option>EN</option>
-						<option>RU</option>
-					</select>
+				<div class="local">
+					<form action="Controller" method="post">
+						<input type="hidden" name="command" value="changelanguage" />
+						<input type="hidden" name="local" value="fr" /> 
+						<input type="submit" value="${fr_label}" /><br />
+					</form>
+					<form action="Controller" method="post">
+						<input type="hidden" name="command" value="changelanguage" />
+						<input type="hidden" name="local" value="en" /> 
+						<input type="submit" value="${en_label}" /><br />
+					</form>		
 				</div>
-				<a href="Controller?command=gotoindexpage"><img alt="logo"
-					src="css/img/pngwing.png" width="183px" height="143"></a>
+				<a href="Controller?command=gotoindexpage"><img
+					alt="Surfhome logo" src="css/img/pngwing.png" width="183px"
+					height="143"></a>
 			</div>
 			<ul class="links">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">New products</a></li>
-				<li><a href="#">Surfboards</a></li>
-				<li><a href="#">Surf Accessories</a></li>
-				<li><a href="#">Sale</a></li>
-				<li><a href="Controller?command=gotoaboutpage">About</a></li>
-				<li><a href="#">Contacts</a></li>
-				<li><a href="Controller?command=gotosigninpage">Sign in</a></li>
+				<li><a href="#">${home_label}</a></li>
+				<li><a href="#">${products_label}</a></li>
+				<li><a href="#">${surfboars_label}</a></li>
+				<li><a href="#">${surfaccessories_label}</a></li>
+				<li><a href="#">${sale_label}</a></li>
+				<li><a href="Controller?command=gotoaboutpage">${about_label}</a></li>
+				<li><a href="#">${contact_label}</a></li>
+				<li><a href="Controller?command=gotosigninpage">${login_label}</a></li>
 			</ul>
 		</div>
 	</div>
@@ -37,7 +46,7 @@
 		<form class="form" action="Controller" method="post">
 			<input type="hidden" name="command" value="logination" />
 			<h1>
-				<span class="sign-in">Sign in</span>
+				<span class="sign-in">${login_label}</span>
 			</h1>
 			<div class="message">
 				<c:forEach var="message" items="${param.message}">
@@ -45,45 +54,44 @@
 				</c:forEach>
 			</div>
 			<p class="float">
-				<label for="login">Username</label> <input type="text" name="name"
-					value="" placeholder="Enter username" required
+				<label for="login">${username_label}</label> <input type="text"
+					name="name" value="" placeholder="${username_ph}" required
 					oninvalid="this.setCustomValidity('This field is required')"
 					oninput="setCustomValidity('')" />
 			</p>
 			<p class="float">
-				<label for="password">Password</label> <input type="password"
-					name="password" value="" placeholder="Enter password" required
+				<label for="password">${password_label}</label> <input type="password"
+					name="password" value="" placeholder="${password_ph}" required
 					oninvalid="this.setCustomValidity('This field is required')"
 					oninput="setCustomValidity('')" />
 			</p>
 			<p class="clearfix">
-				<a href="Controller?command=registration" class="reg">Registration</a>
-				<input type="submit" value="Log in" />
+				<a href="Controller?command=registration" class="reg">${registration_button}</a>
+				<input type="submit" value= "${login_button}"/>
 			</p>
 		</form>
 	</main>
 	<footer>
 		<div class="footer">
-
 			<div class="feed">
-				<h3>INF</h3>
+				<h3>${inf_ft}</h3>
 				<p>How does surfing keep you healthy? Surfing is a particularly
 					good way to keep fit because it is such a complete sport. When you
 					surf, you work out all of your major muscle groups.</p>
 			</div>
 			<div class="sitemap">
-				<h3>SITEMAP</h3>
+				<h3>${sitemap_ft}</h3>
 				<div>
-					<a href="/home/">Home</a> <a href="/about/">About</a> <a
-						href="/services/">Products</a>
+					<a href="/home/">${home_ft}</a> <a href="/about/">${about_ft}</a> <a
+						href="/services/">${products_ft}</a>
 				</div>
 				<div>
-					<a href="/partners/">Partners</a> <a href="/customers/">Support</a>
-					<a href="/contact/">Contact</a>
+					<a href="/partners/">${partners_ft}</a> <a href="/support/">${support_ft}</a>
+					<a href="/contact/">${contact_ft}</a>
 				</div>
 			</div>
 			<div class="social">
-				<h3>SOCIAL NETWORKS</h3>
+				<h3>${networks_ft}</h3>
 			</div>
 			<div class="footer-logo">
 				<a href="/"><img src="css/img/pngwing.png" width="100px"

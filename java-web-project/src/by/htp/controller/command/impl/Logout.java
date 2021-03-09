@@ -18,6 +18,7 @@ public class Logout implements Command {
 
 		if (session != null) {
 			session.removeAttribute("auth");
+			session.removeAttribute("user");
 			System.out.println("User logged out");
 		}
 

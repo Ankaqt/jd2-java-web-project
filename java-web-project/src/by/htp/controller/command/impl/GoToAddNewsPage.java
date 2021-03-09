@@ -28,6 +28,10 @@ public class GoToAddNewsPage implements Command {
 			response.sendRedirect("Controller?command=gotosigninpage&message=Please sign in.");
 			return;
 		}
+		
+		String url = request.getRequestURL() + "?" + request.getQueryString();
+
+		session.setAttribute("url", url);
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/news_add_form.jsp");
 		requestDispatcher.forward(request, response);

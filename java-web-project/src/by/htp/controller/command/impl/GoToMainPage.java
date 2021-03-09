@@ -38,6 +38,11 @@ public class GoToMainPage implements Command {
 
 		try {
 			List<News> news = newsService.takeALL();
+
+			String url = request.getRequestURL() + "?" + request.getQueryString();
+
+			session.setAttribute("url", url);
+			
 			request.setAttribute("news", news);
 			request.setAttribute("username", session.getAttribute("username"));
 			request.setAttribute("role", session.getAttribute("role"));

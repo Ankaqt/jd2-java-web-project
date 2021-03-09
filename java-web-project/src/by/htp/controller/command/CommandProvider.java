@@ -3,6 +3,7 @@ package by.htp.controller.command;
 import java.util.HashMap;
 import java.util.Map;
 
+import by.htp.controller.command.impl.ChangeLanguage;
 import by.htp.controller.command.impl.DeleteNews;
 import by.htp.controller.command.impl.GoToAboutPage;
 import by.htp.controller.command.impl.GoToAddNewsPage;
@@ -36,6 +37,7 @@ public class CommandProvider {
 		commands.put(CommandName.DELETENEWS, new DeleteNews());
 		commands.put(CommandName.GOTOADDNEWSPAGE, new GoToAddNewsPage());
 		commands.put(CommandName.INSERTNEWNEWS, new InsertNewNews());
+		commands.put(CommandName.CHANGELANGUAGE, new ChangeLanguage());
 
 	}
 

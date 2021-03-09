@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8" import="java.util.List,by.htp.bean.News"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@include file="localization_file.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +14,18 @@
 	<div class="wrap">
 		<div class="nav">
 			<div class="header">
-				<div class="select-style">
-					<select>
-						<option>EN</option>
-						<option>RU</option>
-					</select>
+				<div class="local">
+					<form action="Controller" method="post">
+						<input type="hidden" name="command" value="changelanguage" />
+						<input type="hidden" name="local" value="fr" /> 
+						<input type="submit" value="${fr_label}" /><br />
+					</form>
+					<form action="Controller" method="post">
+						<input type="hidden" name="command" value="changelanguage" />
+						<input type="hidden" name="local" value="en" /> 
+						<input type="submit" value="${en_label}" /><br />
+					</form>
+							
 				</div>
 				<a href="Controller?command=gotoindexpage"><img
 					alt="Surfhome logo"
@@ -24,14 +33,16 @@
 					width="183px" height="143"></a>
 			</div>
 			<ul class="links">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">New products</a></li>
-				<li><a href="#">Surfboards</a></li>
-				<li><a href="#">Surf Accessories</a></li>
-				<li><a href="#">Sale</a></li>
-				<li><a href="Controller?command=gotoaboutpage">About</a></li>
-				<li><a href="#">Contacts</a></li>
-				<li><a href="Controller?command=gotosigninpage">Sign in</a></li>
+				<li><a href="#"><c:out value="${home_label}" /></a></li>
+				<li><a href="#"><c:out value="${products_label}" /></a></li>
+				<li><a href="#"><c:out value="${surfboars_label}" /></a></li>
+				<li><a href="#"><c:out value="${surfaccessories_label}" /></a></li>
+				<li><a href="#"><c:out value="${sale_label}" /></a></li>
+				<li><a href="Controller?command=gotoaboutpage"><c:out
+							value="${about_label}" /></a></li>
+				<li><a href="#"><c:out value="${contact_label}" /></a></li>
+				<li><a href="Controller?command=gotosigninpage"><c:out
+							value="${login_label}" /></a></li>
 			</ul>
 		</div>
 	</div>
@@ -76,29 +87,28 @@
 	<footer>
 		<div class="footer">
 			<div class="feed">
-				<h3>INF</h3>
+				<h3>${inf_ft}</h3>
 				<p>How does surfing keep you healthy? Surfing is a particularly
 					good way to keep fit because it is such a complete sport. When you
 					surf, you work out all of your major muscle groups.</p>
 			</div>
 			<div class="sitemap">
-				<h3>SITEMAP</h3>
+				<h3>${sitemap_ft}</h3>
 				<div>
-					<a href="/home/">Home</a> <a href="/about/">About</a> <a
-						href="/services/">Products</a>
+					<a href="/home/">${home_ft}</a> <a href="/about/">${about_ft}</a> <a
+						href="/services/">${products_ft}</a>
 				</div>
 				<div>
-					<a href="/partners/">Partners</a> <a href="/customers/">Support</a>
-					<a href="/contact/">Contact</a>
+					<a href="/partners/">${partners_ft}</a> <a href="/support/">${support_ft}</a>
+					<a href="/contact/">${contact_ft}</a>
 				</div>
 			</div>
 			<div class="social">
-				<h3>SOCIAL NETWORKS</h3>
+				<h3>${networks_ft}</h3>
 			</div>
 			<div class="footer-logo">
-				<a href="/"><img
-					src="css/img/pngwing.png"
-					width="100px" height="80" alt="Surfhome logo"></a>
+				<a href="/"><img src="css/img/pngwing.png" width="100px"
+					height="80" alt="Surfhome logo"></a>
 				<p>© 2021 SURFHOME| All Rights Reserved</p>
 			</div>
 		</div>

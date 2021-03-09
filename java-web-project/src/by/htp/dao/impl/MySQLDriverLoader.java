@@ -9,7 +9,7 @@ public class MySQLDriverLoader {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			throw new DBDriverLoadingException(e);
+			throw new DBDriverLoadingException("Driver didn't load", e);
 		}
 	}
 
