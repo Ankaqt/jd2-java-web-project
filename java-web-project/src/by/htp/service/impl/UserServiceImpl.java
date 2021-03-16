@@ -22,17 +22,17 @@ public class UserServiceImpl implements UserService {
 		ValidationProvider validationProvider = ValidationProvider.getInstance();
 		LoginationValidator loginationValidator = validationProvider.getLoginValidator();
 
-		User user = null;
+		User user ;
 
 		if (loginationValidator.checkLogination(name, password)) {
 			try {
-				user = userDAO.authorization(name, password);
+				return user = userDAO.authorization(name, password);
 			} catch (DAOException e) {
 				throw new ServiceException("dao error", e);
 			}
-		}
-
-		return user;
+		} else {
+			throw new ServiceException("user didn't login");
+		}	
 	}
 
 	@Override
