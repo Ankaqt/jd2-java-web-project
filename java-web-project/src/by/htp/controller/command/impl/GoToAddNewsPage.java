@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import by.htp.controller.command.Command;
+import by.htp.controller.security.SecurityLoginationCheck;
 
 public class GoToAddNewsPage implements Command {
 
@@ -17,15 +18,7 @@ public class GoToAddNewsPage implements Command {
 
 		HttpSession session = request.getSession();
 
-		if (session == null) {
-			response.sendRedirect("Controller?command=gotosigninpage&message=Please sign in.");
-			return;
-		}
-
-		Boolean isAuth = (Boolean) session.getAttribute("auth");
-
-		if (isAuth == null || !isAuth) {
-			response.sendRedirect("Controller?command=gotosigninpage&message=Please sign in.");
+		if (SecurityLoginationCheck.checkLogination(request, response)) {
 			return;
 		}
 		

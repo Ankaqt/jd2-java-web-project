@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import by.htp.bean.News;
 import by.htp.controller.command.Command;
+import by.htp.controller.security.SecurityLoginationCheck;
 import by.htp.service.NewsService;
 import by.htp.service.ServiceException;
 import by.htp.service.ServiceProvider;
@@ -18,16 +19,7 @@ public class DeleteNews implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-
-		if (session == null) {
-			response.sendRedirect("Controller?command=gotosigninpage&message=Please sign in.");
-			return;
-		}
-
-		Boolean isAuth = (Boolean) session.getAttribute("auth");
-		if (isAuth == null || !isAuth) {
-			response.sendRedirect("Controller?command=gotosigninpage&message=Please sign in.");
+		if (SecurityLoginationCheck.checkLogination(request, response)) {
 			return;
 		}
 

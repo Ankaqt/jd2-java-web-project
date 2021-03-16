@@ -49,22 +49,35 @@
 			</c:forEach>
 		</h1>
 		<div class="news">
-			<c:set var="n" value="${requestScope.news}" />
-			<h1>
-				<span class="title1"><c:out value="${n.title}" /> </span>
-			</h1>
-			<br />
-			<c:out value="${n.date}" />
-			<br /> ${n.content}
-			<h4>
-				<a href="Controller?command=gotomainpage" class="back">${back_button}</a>
-
-				<c:if test="${sessionScope.user.role eq \"admin\"}">
-					<a
-						href="Controller?command=gotoeditnewspage&id=<c:out value="${n.id}" />"
-						class="edit">${edit_button}</a>
-				</c:if>
-			</h4>
+			<a href="Controller?command=gotomainpage" class="back">${back_button}</a>
+			<c:choose>
+				<c:when test="${news != null}">
+					<c:set var="n" value="${requestScope.news}" />
+					<h1>
+						<span class="title1"><c:out value="${n.title}" /> </span>
+					</h1>
+					<br />
+					<c:out value="${n.date}" />
+					<br /> ${n.content}
+					<h4>
+						<c:if test="${sessionScope.user.role eq \"admin\"}">
+							<a
+								href="Controller?command=gotoeditnewspage&id=<c:out value="${n.id}" />"
+								class="edit">${edit_button}</a>
+						</c:if>
+					</h4>
+				</c:when>
+				<c:when test="${news == null}">
+					<div class="error" style="text-align: center;">
+						<c:out value="${error}" />
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="globaerror" style="text-align: center;">
+						<c:out value="${globalerror}" />
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</main>
 	<footer>

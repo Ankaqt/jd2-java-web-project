@@ -2,7 +2,7 @@
 	pageEncoding="utf-8" import="java.util.List,by.htp.bean.News"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@include file="localization_file.jsp" %>
+<%@include file="localization_file.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,21 +16,19 @@
 			<div class="header">
 				<div class="local">
 					<form action="Controller" method="post">
-						<input type="hidden" name="command" value="changelanguage" />
-						<input type="hidden" name="local" value="fr" /> 
-						<input type="submit" value="${fr_label}" /><br />
+						<input type="hidden" name="command" value="changelanguage" /> <input
+							type="hidden" name="local" value="fr" /> <input type="submit"
+							value="${fr_label}" /><br />
 					</form>
 					<form action="Controller" method="post">
-						<input type="hidden" name="command" value="changelanguage" />
-						<input type="hidden" name="local" value="en" /> 
-						<input type="submit" value="${en_label}" /><br />
+						<input type="hidden" name="command" value="changelanguage" /> <input
+							type="hidden" name="local" value="en" /> <input type="submit"
+							value="${en_label}" /><br />
 					</form>
-							
 				</div>
 				<a href="Controller?command=gotoindexpage"><img
-					alt="Surfhome logo"
-					src="css/img/pngwing.png"
-					width="183px" height="143"></a>
+					alt="Surfhome logo" src="css/img/pngwing.png" width="183px"
+					height="143"></a>
 			</div>
 			<ul class="links">
 				<li><a href="#"><c:out value="${home_label}" /></a></li>
@@ -48,9 +46,7 @@
 	</div>
 	<main>
 		<div class="image">
-			<img alt=""
-				src="css/img/photo3.jpg"
-				width="1481.5px" height="600">
+			<img alt="" src="css/img/photo3.jpg" width="1481.5px" height="600">
 			<h2>
 				<span>ABOUT US</span>
 			</h2>

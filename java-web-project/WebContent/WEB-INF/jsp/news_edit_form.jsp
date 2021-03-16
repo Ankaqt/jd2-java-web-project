@@ -45,30 +45,46 @@
 	<main>
 		<div class="news">
 			<c:if test="${sessionScope.user.role eq \"admin\"}">
-				<form class="form" action="Controller" method="post">
-					<input type="hidden" name="command" value="saveeditednews" />
-					<c:set var="n" value="${requestScope.news}" />
-					<input type="hidden" name="id" value="<c:out value="${n.id}" />" />
-					<br /> DATE <br />
-					<c:out value="${n.date}" />
-					<br /> EDIT TITLE <br />
-					<textarea rows="3" cols="130" name="title">${n.title} </textarea>
-					<br /> EDIT BRIEF <br />
-					<textarea rows="10" cols="130" name="brief">${n.brief} </textarea>
-					<br /> EDIT CONTENT <br />
-					<textarea rows="30" cols="130" name="content">${n.content} </textarea>
-					<h4>
-						<br /> <a
-							href="Controller?command=shownews&id=<c:out value="${n.id}"/>"
-							class="back">${back_button}</a> <input type="submit" value="${save_button}" />
-					</h4>
-				</form>
-				<form class="form1" action="Controller" method="post">
-					<input type="hidden" name="command" value="deletenews" />
-					<c:set var="n" value="${requestScope.news}" />
-					<input type="hidden" name="id" value="<c:out value="${n.id}" />" />
-					<input type="submit" value="${delete_button}" />
-				</form>
+				<c:set var="n" value="${requestScope.news}" />
+				<h4>
+					<a href="Controller?command=shownews&id=<c:out value="${n.id}"/>"
+						class="back">${back_button}</a>
+				</h4>
+				<c:choose>
+					<c:when test="${news != null}">
+						<form class="form" action="Controller" method="post">
+							<input type="hidden" name="command" value="saveeditednews" />
+
+							<c:set var="n" value="${requestScope.news}" />
+							<input type="hidden" name="id" value="<c:out value="${n.id}" />" />
+							<br /> DATE <br />
+							<c:out value="${n.date}" />
+							<br /> EDIT TITLE <br />
+							<textarea rows="3" cols="130" name="title">${n.title} </textarea>
+							<br /> EDIT BRIEF <br />
+							<textarea rows="10" cols="130" name="brief">${n.brief} </textarea>
+							<br /> EDIT CONTENT <br />
+							<textarea rows="30" cols="130" name="content">${n.content} </textarea>
+							<input type="submit" value="${save_button}" />
+						</form>
+						<form class="form1" action="Controller" method="post">
+							<input type="hidden" name="command" value="deletenews" />
+							<c:set var="n" value="${requestScope.news}" />
+							<input type="hidden" name="id" value="<c:out value="${n.id}" />" />
+							<input type="submit" value="${delete_button}" />
+						</form>
+					</c:when>
+					<c:when test="${news == null}">
+						<div class="error" style="text-align: center;">
+							<c:out value="${error}" />
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="globaerror" style="text-align: center;">
+							<c:out value="${globalerror}" />
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</c:if>
 		</div>
 	</main>

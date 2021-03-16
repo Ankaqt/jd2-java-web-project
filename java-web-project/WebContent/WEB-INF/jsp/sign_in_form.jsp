@@ -2,7 +2,7 @@
 	pageEncoding="utf-8" import="java.util.List,by.htp.bean.News"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@include file="localization_file.jsp" %>
+<%@include file="localization_file.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,15 +16,15 @@
 			<div class="header">
 				<div class="local">
 					<form action="Controller" method="post">
-						<input type="hidden" name="command" value="changelanguage" />
-						<input type="hidden" name="local" value="fr" /> 
-						<input type="submit" value="${fr_label}" /><br />
+						<input type="hidden" name="command" value="changelanguage" /> <input
+							type="hidden" name="local" value="fr" /> <input type="submit"
+							value="${fr_label}" /><br />
 					</form>
 					<form action="Controller" method="post">
-						<input type="hidden" name="command" value="changelanguage" />
-						<input type="hidden" name="local" value="en" /> 
-						<input type="submit" value="${en_label}" /><br />
-					</form>		
+						<input type="hidden" name="command" value="changelanguage" /> <input
+							type="hidden" name="local" value="en" /> <input type="submit"
+							value="${en_label}" /><br />
+					</form>
 				</div>
 				<a href="Controller?command=gotoindexpage"><img
 					alt="Surfhome logo" src="css/img/pngwing.png" width="183px"
@@ -60,14 +60,15 @@
 					oninput="setCustomValidity('')" />
 			</p>
 			<p class="float">
-				<label for="password">${password_label}</label> <input type="password"
-					name="password" value="" placeholder="${password_ph}" required
+				<label for="password">${password_label}</label> <input
+					type="password" name="password" value=""
+					placeholder="${password_ph}" required
 					oninvalid="this.setCustomValidity('This field is required')"
 					oninput="setCustomValidity('')" />
 			</p>
 			<p class="clearfix">
 				<a href="Controller?command=registration" class="reg">${registration_button}</a>
-				<input type="submit" value= "${login_button}"/>
+				<input type="submit" value="${login_button}" />
 			</p>
 		</form>
 	</main>

@@ -55,7 +55,7 @@
 					<textarea rows="30" cols="130" name="content"> </textarea>
 					<h4>
 						<br /> <a href="Controller?command=gotomainpage" class="back">${back_button}</a>
-						<input type="submit" value="save_button" />
+						<input type="submit" value="${save_button}" />
 					</h4>
 				</form>
 			</c:if>

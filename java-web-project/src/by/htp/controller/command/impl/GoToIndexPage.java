@@ -31,6 +31,12 @@ public class GoToIndexPage implements Command {
 			
 			String url = request.getRequestURL() + "?" + request.getQueryString();
 			
+			if (news == null) {
+				request.setAttribute("error", "Unfortunately the news is not available at the moment");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main_index.jsp");
+				requestDispatcher.forward(request, response);
+			}
+			
 			session.setAttribute("url", url);
 			request.setAttribute("news", news);
 
@@ -38,7 +44,8 @@ public class GoToIndexPage implements Command {
 			requestDispatcher.forward(request, response);
 
 		} catch (ServiceException e) {
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("global_error.jsp");
+			request.setAttribute("globalerror","Unfortunately the news is not available at the moment");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main_index.jsp");
 			requestDispatcher.forward(request, response);
 		}
 

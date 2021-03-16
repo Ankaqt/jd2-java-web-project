@@ -2,7 +2,7 @@
 	pageEncoding="utf-8" import="java.util.List,by.htp.bean.News"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@include file="localization_file.jsp" %>
+<%@include file="localization_file.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,15 +16,15 @@
 			<div class="header">
 				<div class="local">
 					<form action="Controller" method="post">
-						<input type="hidden" name="command" value="changelanguage" />
-						<input type="hidden" name="local" value="fr" /> 
-						<input type="submit" value="${fr_label}" />
+						<input type="hidden" name="command" value="changelanguage" /> <input
+							type="hidden" name="local" value="fr" /> <input type="submit"
+							value="${fr_label}" />
 					</form>
 					<form action="Controller" method="post">
-						<input type="hidden" name="command" value="changelanguage" />
-						<input type="hidden" name="local" value="en" /> 
-						<input type="submit" value="${en_label}" />
-					</form>		
+						<input type="hidden" name="command" value="changelanguage" /> <input
+							type="hidden" name="local" value="en" /> <input type="submit"
+							value="${en_label}" />
+					</form>
 				</div>
 				<a href="Controller?command=gotoindexpage"><img
 					alt="Surfhome logo" src="css/img/pngwing.png" width="183px"
@@ -64,15 +64,29 @@
 			<h1 class="title">THE SURFERS CORNER</h1>
 		</div>
 		<div class="news">
-			<c:forEach var="n" items="${requestScope.news}">
-				<h1>
-					<span class="title1"><c:out value="${n.title}" /></span>
-				</h1>
-				<br />
-				<c:out value="${n.date}" />
-				<br />
-				<c:out value="${n.brief}" />
-			</c:forEach>
+			<c:choose>
+				<c:when test="${news != null}">
+					<c:forEach var="n" items="${requestScope.news}">
+						<h1>
+							<span class="title1"><c:out value="${n.title}" /></span>
+						</h1>
+						<br />
+						<c:out value="${n.date}" />
+						<br />
+						<c:out value="${n.brief}" />
+					</c:forEach>
+				</c:when>
+				<c:when test="${news == null}">
+					<div class="error" style="text-align: center;">
+						<c:out value="${error}" />
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="globaerror" style="text-align: center;">
+						<c:out value="${globalerror}" />
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</main>
 	<footer>

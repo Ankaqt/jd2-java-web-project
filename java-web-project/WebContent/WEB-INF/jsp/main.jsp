@@ -51,25 +51,43 @@
 		<div style="text-align: center;">
 			<h1 class="title">NEWS</h1>
 		</div>
-		<div class="news">
-			<c:forEach var="n" items="${requestScope.news}">
-				<h1>
-					<span class="title1"><c:out value="${n.title}" /> </span>
-				</h1>
-				<br />
-				<c:out value="${n.date}" />
-				<br />
-				<c:out value="${n.brief}" />
-				<br />
-				<a href="Controller?command=shownews&id=<c:out value="${n.id}" /> "
-					class="read">${read_button}</a>
-			</c:forEach>
-		</div>
-		<h4>
-			<c:if test="${sessionScope.user.role eq \"admin\"}">
-				<a href="Controller?command=gotoaddnewspage" class="addNews">${add_button}</a>
-			</c:if>
-		</h4>
+		<c:choose>
+			<c:when test="${news != null}">
+				<div class="news">
+					<c:forEach var="n" items="${requestScope.news}">
+						<h1>
+							<span class="title1"><c:out value="${n.title}" /> </span>
+						</h1>
+						<br />
+						<c:out value="${n.date}" />
+						<br />
+						<c:out value="${n.brief}" />
+						<br />
+						<a
+							href="Controller?command=shownews&id=<c:out value="${n.id}" /> "
+							class="read">${read_button}</a>
+					</c:forEach>
+				</div>
+				<h4>
+					<c:if test="${sessionScope.user.role eq \"admin\"}">
+						<a href="Controller?command=gotoaddnewspage" class="addNews">${add_button}</a>
+					</c:if>
+				</h4>
+				</c:when>
+				<c:when test="${news == null}">
+					<div class="error" style="text-align: center;">
+						<c:out value="${error}" />
+					</div>
+				</c:when>
+				<c:otherwise>
+					<div class="globaerror" style="text-align: center;">
+						<c:out value="${globalerror}" />
+					</div>
+				</c:otherwise>
+
+
+			
+		</c:choose>
 	</main>
 	<footer>
 		<div class="footer">
