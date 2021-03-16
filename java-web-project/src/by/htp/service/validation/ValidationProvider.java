@@ -1,6 +1,7 @@
 package by.htp.service.validation;
 
 import by.htp.service.validation.impl.LoginationValidatorImpl;
+import by.htp.service.validation.impl.NewsModifyValidatorImpl;
 import by.htp.service.validation.impl.RegistrationValidatorImpl;
 
 public class ValidationProvider {
@@ -11,19 +12,25 @@ public class ValidationProvider {
 
 	}
 
-	private final LoginationValidatorImpl loginationValidatorImpl = new LoginationValidatorImpl();
-	private final RegistrationValidatorImpl registrationValidatorImpl = new RegistrationValidatorImpl();
+	private final LoginationValidator loginationValidator = new LoginationValidatorImpl();
+	private final RegistrationValidator registrationValidator = new RegistrationValidatorImpl();
+	private final NewsModifyValidator newsModifyValidator = new NewsModifyValidatorImpl();
 
 	public static ValidationProvider getInstance() {
 		return instance;
 	}
 
-	public LoginationValidatorImpl getLoginValidatorImpl() {
-		return loginationValidatorImpl;
+	public LoginationValidator getLoginValidator() {
+		return loginationValidator;
 	}
 
-	public RegistrationValidatorImpl getRegistrationValidatorImpl() {
-		return registrationValidatorImpl;
+	public RegistrationValidator getRegistrationValidator() {
+		return registrationValidator;
+	}
+
+	public NewsModifyValidator getNewsModifyValidator() {
+		return newsModifyValidator;
+
 	}
 
 }

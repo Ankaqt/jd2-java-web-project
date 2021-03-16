@@ -8,6 +8,8 @@ import by.htp.dao.DAOProvider;
 import by.htp.dao.NewsDAO;
 import by.htp.service.NewsService;
 import by.htp.service.ServiceException;
+import by.htp.service.validation.NewsModifyValidator;
+import by.htp.service.validation.ValidationProvider;
 
 public class NewsServiceImpl implements NewsService {
 
@@ -51,16 +53,19 @@ public class NewsServiceImpl implements NewsService {
 		DAOProvider provider = DAOProvider.getInstance();
 		NewsDAO newsDAO = provider.getNewsdao();
 
-		boolean update;
+		ValidationProvider validationProvider = ValidationProvider.getInstance();
+		NewsModifyValidator newsModifyValidator = validationProvider.getNewsModifyValidator();
 
-		try {
-			update = newsDAO.editNews(news);
-		} catch (DAOException e) {
-			throw new ServiceException(e);
+		if (newsModifyValidator.checkNewsModify(news)) {
+			try {
+
+				return newsDAO.editNews(news);
+			} catch (DAOException e) {
+				throw new ServiceException(e);
+			}
+		} else {
+			throw new ServiceException("News wasn't saved");
 		}
-
-		return update;
-
 	}
 
 	@Override
@@ -87,14 +92,17 @@ public class NewsServiceImpl implements NewsService {
 		DAOProvider provider = DAOProvider.getInstance();
 		NewsDAO newsDAO = provider.getNewsdao();
 
-		boolean insert;
+		ValidationProvider validationProvider = ValidationProvider.getInstance();
+		NewsModifyValidator newsModifyValidator = validationProvider.getNewsModifyValidator();
 
-		try {
-			insert = newsDAO.insertNews(news);
-		} catch (DAOException e) {
-			throw new ServiceException(e);
+		if (newsModifyValidator.checkNewsModify(news)) {
+			try {
+				return newsDAO.insertNews(news);
+			} catch (DAOException e) {
+				throw new ServiceException(e);
+			}
+		} else {
+			throw new ServiceException("News wasn't saved");
 		}
-
-		return insert;
 	}
 }

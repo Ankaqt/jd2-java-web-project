@@ -41,7 +41,7 @@ public class InsertNewNews implements Command {
 			response.sendRedirect("Controller?command=gotomainpage&message=Changes saved successfully");
 
 		} catch (ServiceException e) {
-			response.sendRedirect("Controller?command=gotomainpage");
+			response.sendRedirect("Controller?command=gotomainpage&message=News wasn't saved");
 		}
 
 	}

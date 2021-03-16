@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public final class SecurityLoginationCheck {
 
 	public static boolean checkLogination(HttpServletRequest request, HttpServletResponse response)
@@ -23,7 +25,7 @@ public final class SecurityLoginationCheck {
 
 		} else {
 
-			Boolean isAuth = (Boolean) session.getAttribute("auth");
+			Boolean isAuth = (Boolean) session.getAttribute(ATTR_AUTH);
 			if (isAuth == null || !isAuth) {
 				response.sendRedirect("Controller?command=gotosigninpage&message=Please sign in.");
 

@@ -7,9 +7,9 @@ import by.htp.dao.DAOProvider;
 import by.htp.dao.UserDAO;
 import by.htp.service.ServiceException;
 import by.htp.service.UserService;
+import by.htp.service.validation.LoginationValidator;
+import by.htp.service.validation.RegistrationValidator;
 import by.htp.service.validation.ValidationProvider;
-import by.htp.service.validation.impl.LoginationValidatorImpl;
-import by.htp.service.validation.impl.RegistrationValidatorImpl;
 
 public class UserServiceImpl implements UserService {
 
@@ -20,11 +20,11 @@ public class UserServiceImpl implements UserService {
 		UserDAO userDAO = provider.getUserdao();
 
 		ValidationProvider validationProvider = ValidationProvider.getInstance();
-		LoginationValidatorImpl loginationValidatorImpl = validationProvider.getLoginValidatorImpl();
+		LoginationValidator loginationValidator = validationProvider.getLoginValidator();
 
 		User user = null;
 
-		if (loginationValidatorImpl.checkLogination(name, password)) {
+		if (loginationValidator.checkLogination(name, password)) {
 			try {
 				user = userDAO.authorization(name, password);
 			} catch (DAOException e) {
@@ -42,9 +42,9 @@ public class UserServiceImpl implements UserService {
 		UserDAO userDAO = provider.getUserdao();
 
 		ValidationProvider validationProvider = ValidationProvider.getInstance();
-		RegistrationValidatorImpl registrationValidatorImpl = validationProvider.getRegistrationValidatorImpl();
+		RegistrationValidator registrationValidator = validationProvider.getRegistrationValidator();
 
-		if (registrationValidatorImpl.checkRegistration(registrationInfo)) {
+		if (registrationValidator.checkRegistration(registrationInfo)) {
 			try {
 				return userDAO.registrate(registrationInfo);
 			} catch (DAOException e) {

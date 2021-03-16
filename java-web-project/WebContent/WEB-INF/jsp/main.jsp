@@ -48,6 +48,11 @@
 				<p>Welcome to SURFHOME, ${user.name} - ${user.role}</p>
 			</c:if>
 		</h1>
+		<h1 align="center">
+			<c:forEach var="message" items="${param.message}">
+				<c:out value="${message}" />
+			</c:forEach>
+		</h1>
 		<div style="text-align: center;">
 			<h1 class="title">NEWS</h1>
 		</div>

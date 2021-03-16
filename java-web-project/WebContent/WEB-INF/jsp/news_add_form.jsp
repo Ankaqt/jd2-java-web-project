@@ -45,6 +45,9 @@
 	<main>
 		<div class="news">
 			<c:if test="${sessionScope.user.role eq \"admin\"}">
+				<h4>
+					<a href="Controller?command=gotomainpage" class="back">${back_button}</a>
+				</h4>
 				<form class="form" action="Controller" method="post">
 					<input type="hidden" name="command" value="insertnewnews" /> <br />
 					EDIT TITLE <br />
@@ -54,7 +57,6 @@
 					<br /> EDIT CONTENT <br />
 					<textarea rows="30" cols="130" name="content"> </textarea>
 					<h4>
-						<br /> <a href="Controller?command=gotomainpage" class="back">${back_button}</a>
 						<input type="submit" value="${save_button}" />
 					</h4>
 				</form>
