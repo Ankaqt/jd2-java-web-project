@@ -19,6 +19,11 @@ public class CommandConstant {
 	public static final String ATTR_USERNAME = "username";
 	public static final String ATTR_ROLE = "role";
 	
+	public static final String ATTR_ERROR = "error";
+	public static final String ATTR_GLOBALERROR = "globalerror";
+	
+	
+	
 	
 
 }

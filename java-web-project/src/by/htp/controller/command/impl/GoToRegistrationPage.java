@@ -10,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import by.htp.controller.command.Command;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public class GoToRegistrationPage implements Command {
 
 	@Override
@@ -19,7 +21,7 @@ public class GoToRegistrationPage implements Command {
 
 		String url = request.getRequestURL() + "?" + request.getQueryString();
 
-		session.setAttribute("url", url);
+		session.setAttribute(ATTR_URL, url);
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registration_form.jsp");
 		requestDispatcher.forward(request, response);

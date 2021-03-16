@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import by.htp.controller.command.Command;
 import by.htp.controller.security.SecurityLoginationCheck;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public class GoToAddNewsPage implements Command {
 
 	@Override
@@ -24,7 +26,7 @@ public class GoToAddNewsPage implements Command {
 		
 		String url = request.getRequestURL() + "?" + request.getQueryString();
 
-		session.setAttribute("url", url);
+		session.setAttribute(ATTR_URL, url);
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/news_add_form.jsp");
 		requestDispatcher.forward(request, response);

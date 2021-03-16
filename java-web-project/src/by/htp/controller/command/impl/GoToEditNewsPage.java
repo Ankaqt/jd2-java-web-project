@@ -15,6 +15,8 @@ import by.htp.service.NewsService;
 import by.htp.service.ServiceException;
 import by.htp.service.ServiceProvider;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public class GoToEditNewsPage implements Command {
 
 	@Override
@@ -30,28 +32,28 @@ public class GoToEditNewsPage implements Command {
 		NewsService newsService = provider.getNewsService();
 
 		try {
-			Integer id = Integer.valueOf(request.getParameter("id"));
+			Integer id = Integer.valueOf(request.getParameter(PARAM_ID));
 
 			News news = newsService.takeById(id);
 			
 			String url = request.getRequestURL() + "?" + request.getQueryString();
 			
 			if (news == null) {
-				request.setAttribute("error", "Unfortunately the news is not available at the moment");
+				request.setAttribute(ATTR_ERROR, "Unfortunately the news is not available at the moment");
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main_index.jsp");
 				requestDispatcher.forward(request, response);
 			}
 
-			session.setAttribute("url", url);
+			session.setAttribute(ATTR_URL, url);
 
-			request.setAttribute("username", session.getAttribute("username"));
-			request.setAttribute("news", news);
+			request.setAttribute(ATTR_USERNAME, session.getAttribute("username"));
+			request.setAttribute(ATTR_NEWS, news);
 
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/news_edit_form.jsp");
 			requestDispatcher.forward(request, response);
 
 		} catch (ServiceException e) {
-			request.setAttribute("globalerror","Unfortunately the news is not available at the moment");
+			request.setAttribute(ATTR_GLOBALERROR,"Unfortunately the news is not available at the moment");
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main_index.jsp");
 			requestDispatcher.forward(request, response);
 		}

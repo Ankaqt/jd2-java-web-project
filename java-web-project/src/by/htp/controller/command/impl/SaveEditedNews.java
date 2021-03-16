@@ -14,6 +14,8 @@ import by.htp.service.NewsService;
 import by.htp.service.ServiceException;
 import by.htp.service.ServiceProvider;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public class SaveEditedNews implements Command {
 
 	@Override
@@ -25,13 +27,10 @@ public class SaveEditedNews implements Command {
 			return;
 		}
 
-		String title = request.getParameter("title");
-		String brief = request.getParameter("brief");
-		String content = request.getParameter("content");
-		int id = Integer.valueOf(request.getParameter("id"));
-
-		System.out.println("Title:" + title);
-		System.out.println("Brief:" + brief);
+		String title = request.getParameter(PARAM_TITLE);
+		String brief = request.getParameter(PARAM_BRIEF);
+		String content = request.getParameter(PARAM_CONTENT);
+		int id = Integer.valueOf(request.getParameter(PARAM_ID));
 
 		News news = new News(id, title, brief, content);
 

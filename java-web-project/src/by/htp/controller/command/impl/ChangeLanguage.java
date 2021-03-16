@@ -9,20 +9,22 @@ import javax.servlet.http.HttpSession;
 
 import by.htp.controller.command.Command;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public class ChangeLanguage implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		String local = request.getParameter("local");
+		String local = request.getParameter(PARAM_LOCAL);
 
-		request.setAttribute("local", local);
+		request.setAttribute(PARAM_LOCAL, local);
 
 		if (session != null)
-			session.setAttribute("local", local);
+			session.setAttribute(PARAM_LOCAL, local);
 
-		String url = (String) session.getAttribute("url");
+		String url = (String) session.getAttribute(ATTR_URL);
 
 		response.sendRedirect(url);
 

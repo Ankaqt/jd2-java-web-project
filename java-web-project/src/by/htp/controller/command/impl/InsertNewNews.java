@@ -14,6 +14,8 @@ import by.htp.service.NewsService;
 import by.htp.service.ServiceException;
 import by.htp.service.ServiceProvider;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public class InsertNewNews implements Command {
 
 	@Override
@@ -25,12 +27,9 @@ public class InsertNewNews implements Command {
 			return;
 		}
 
-		String title = request.getParameter("title");
-		String brief = request.getParameter("brief");
-		String content = request.getParameter("content");
-
-		System.out.println("Title:" + title);
-		System.out.println("Brief:" + brief);
+		String title = request.getParameter(PARAM_TITLE);
+		String brief = request.getParameter(PARAM_BRIEF);
+		String content = request.getParameter(PARAM_CONTENT);
 
 		News news = new News(title, brief, content);
 

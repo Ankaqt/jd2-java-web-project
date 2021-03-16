@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import by.htp.controller.command.Command;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public class Logout implements Command {
 
 	@Override
@@ -17,8 +19,8 @@ public class Logout implements Command {
 		HttpSession session = request.getSession();
 
 		if (session != null) {
-			session.removeAttribute("auth");
-			session.removeAttribute("user");
+			session.removeAttribute(ATTR_AUTH);
+			session.removeAttribute(ATTR_USER);
 			System.out.println("User logged out");
 		}
 

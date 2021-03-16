@@ -12,15 +12,17 @@ import by.htp.service.ServiceException;
 import by.htp.service.ServiceProvider;
 import by.htp.service.UserService;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public class SaveNewUser implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String username = request.getParameter("name");
-		String email = request.getParameter("email");
-		String phone = request.getParameter("phone");
-		String password = request.getParameter("password");
+		String username = request.getParameter(PARAM_NAME);
+		String email = request.getParameter(PARAM_EMAIL);
+		String phone = request.getParameter(PARAM_PHONE);
+		String password = request.getParameter(PARAM_PASSWORD);
 
 		RegistrationInfo registrationInfo = new RegistrationInfo(username, email, password, phone);
 

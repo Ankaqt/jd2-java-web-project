@@ -13,16 +13,15 @@ import by.htp.service.ServiceException;
 import by.htp.service.ServiceProvider;
 import by.htp.service.UserService;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public class Logination implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String username = request.getParameter("name");
-		String password = request.getParameter("password");
-
-		System.out.println("Username:" + username);
-		System.out.println("Password:" + password);
+		String username = request.getParameter(PARAM_NAME);
+		String password = request.getParameter(PARAM_PASSWORD);
 
 		ServiceProvider provider = ServiceProvider.getInstance();
 		UserService userService = provider.getUserService();
@@ -39,8 +38,8 @@ public class Logination implements Command {
 			}
 
 			HttpSession session = request.getSession(true);
-			session.setAttribute("auth", true);
-			session.setAttribute("user", user);
+			session.setAttribute(ATTR_AUTH, true);
+			session.setAttribute(ATTR_USER, user);
 			response.sendRedirect("Controller?command=gotomainpage");
 
 		} catch (ServiceException e) {

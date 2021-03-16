@@ -15,6 +15,8 @@ import by.htp.service.NewsService;
 import by.htp.service.ServiceException;
 import by.htp.service.ServiceProvider;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public class GoToIndexPage implements Command {
 
 	@Override
@@ -32,19 +34,19 @@ public class GoToIndexPage implements Command {
 			String url = request.getRequestURL() + "?" + request.getQueryString();
 			
 			if (news == null) {
-				request.setAttribute("error", "Unfortunately the news is not available at the moment");
+				request.setAttribute(ATTR_ERROR, "Unfortunately the news is not available at the moment");
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main_index.jsp");
 				requestDispatcher.forward(request, response);
 			}
 			
-			session.setAttribute("url", url);
-			request.setAttribute("news", news);
+			session.setAttribute(ATTR_URL, url);
+			request.setAttribute(ATTR_NEWS, news);
 
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main_index.jsp");
 			requestDispatcher.forward(request, response);
 
 		} catch (ServiceException e) {
-			request.setAttribute("globalerror","Unfortunately the news is not available at the moment");
+			request.setAttribute(ATTR_GLOBALERROR,"Unfortunately the news is not available at the moment");
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/main_index.jsp");
 			requestDispatcher.forward(request, response);
 		}
