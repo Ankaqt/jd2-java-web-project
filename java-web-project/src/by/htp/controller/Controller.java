@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import by.htp.controller.command.Command;
 import by.htp.controller.command.CommandProvider;
 
+import static by.htp.controller.command.impl.CommandConstant.*;
+
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,7 +37,7 @@ public class Controller extends HttpServlet {
 	private void process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String name = request.getParameter("command");
+		String name = request.getParameter(PARAM_COMMAND);
 		Command command = provider.takeCommand(name);
 
 		command.execute(request, response);

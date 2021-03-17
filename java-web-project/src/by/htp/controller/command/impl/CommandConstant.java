@@ -1,7 +1,8 @@
 package by.htp.controller.command.impl;
 
-public class CommandConstant {
+public final class CommandConstant {
 	
+	public static final String PARAM_COMMAND = "command";
 	public static final String PARAM_NAME = "name";
 	public static final String PARAM_PASSWORD = "password";
 	public static final String PARAM_EMAIL = "email";
