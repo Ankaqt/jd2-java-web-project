@@ -8,8 +8,8 @@ import java.sql.SQLException;
 
 import by.htp.bean.User;
 import by.htp.bean.RegistrationInfo;
-import by.htp.dao.DAOException;
 import by.htp.dao.UserDAO;
+import by.htp.dao.exception.DAOException;
 
 import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_CREATE_USER;
 import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_SELECT_USER;

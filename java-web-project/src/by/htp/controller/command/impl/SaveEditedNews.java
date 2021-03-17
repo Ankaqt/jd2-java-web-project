@@ -11,8 +11,9 @@ import by.htp.bean.News;
 import by.htp.controller.command.Command;
 import by.htp.controller.security.SecurityLoginationCheck;
 import by.htp.service.NewsService;
-import by.htp.service.ServiceException;
 import by.htp.service.ServiceProvider;
+import by.htp.service.exception.NewsException;
+import by.htp.service.exception.ServiceException;
 
 import static by.htp.controller.command.impl.CommandConstant.*;
 
@@ -44,6 +45,10 @@ public class SaveEditedNews implements Command {
 
 		} catch (ServiceException e) {
 			response.sendRedirect("Controller?command=shownews&id=" + id + "&message=Something went wrong. Try again");
+
+		} catch (NewsException e) {
+			response.sendRedirect("Controller?command=shownews&id=" + id
+					+ "&message=News wasn't saved as incorrect data was entered");
 		}
 	}
 }

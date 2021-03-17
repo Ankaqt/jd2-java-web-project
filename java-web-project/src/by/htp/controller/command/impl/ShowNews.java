@@ -12,8 +12,8 @@ import by.htp.bean.News;
 import by.htp.controller.command.Command;
 import by.htp.controller.security.SecurityLoginationCheck;
 import by.htp.service.NewsService;
-import by.htp.service.ServiceException;
 import by.htp.service.ServiceProvider;
+import by.htp.service.exception.ServiceException;
 
 import static by.htp.controller.command.impl.CommandConstant.*;
 

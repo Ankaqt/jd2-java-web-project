@@ -1,6 +1,6 @@
 package by.htp.dao.impl;
 
-import by.htp.dao.DBDriverLoadingException;
+import by.htp.dao.exception.DBDriverLoadingException;
 
 public class MySQLDriverLoader {
 	private static final MySQLDriverLoader instance = new MySQLDriverLoader();

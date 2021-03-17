@@ -8,9 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.htp.bean.RegistrationInfo;
 import by.htp.controller.command.Command;
-import by.htp.service.ServiceException;
 import by.htp.service.ServiceProvider;
 import by.htp.service.UserService;
+import by.htp.service.exception.ServiceException;
+import by.htp.service.exception.UserException;
 
 import static by.htp.controller.command.impl.CommandConstant.*;
 
@@ -34,10 +35,13 @@ public class SaveNewUser implements Command {
 			response.sendRedirect(
 					"Controller?command=gotosigninpage&message=Registration completed successfully. Please sign in");
 			System.out.println("New user saved successfully");
-			
+
 		} catch (ServiceException e) {
-			response.sendRedirect("Controller?command=registration&message=Data entered incorrectly. Try again.");
-			System.out.println("Error in registration");
+			response.sendRedirect("Controller?command=registration&message=You entered incorrect data");
+
+		} catch (UserException e) {
+			response.sendRedirect(
+					"Controller?command=registration&message=You entered incorrect data");
 		}
 
 	}

@@ -1,4 +1,4 @@
-package by.htp.dao;
+package by.htp.dao.exception;
 
 public class DAOException extends Exception {
 

@@ -1,6 +1,7 @@
 package by.htp.dao;
 
 import by.htp.bean.User;
+import by.htp.dao.exception.DAOException;
 import by.htp.bean.RegistrationInfo;
 
 public interface UserDAO {

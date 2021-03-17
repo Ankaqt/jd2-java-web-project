@@ -9,9 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import by.htp.bean.User;
 import by.htp.controller.command.Command;
-import by.htp.service.ServiceException;
 import by.htp.service.ServiceProvider;
 import by.htp.service.UserService;
+import by.htp.service.exception.ServiceException;
+import by.htp.service.exception.UserException;
 
 import static by.htp.controller.command.impl.CommandConstant.*;
 
@@ -43,9 +44,12 @@ public class Logination implements Command {
 			response.sendRedirect("Controller?command=gotomainpage");
 
 		} catch (ServiceException e) {
-			response.sendRedirect("Controller?command=gotosigninpage&message=Something went wrong. Try later.");
-			System.out.println("Error");
+			response.sendRedirect(
+					"Controller?command=gotosigninpage&message=Unfortunately, something went wrong. Try later.");
 
+		} catch (UserException e) {
+			response.sendRedirect(
+					"Controller?command=gotosigninpage&message=You entered incorrect data");
 		}
 
 	}

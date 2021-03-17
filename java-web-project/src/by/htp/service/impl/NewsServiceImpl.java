@@ -3,11 +3,12 @@ package by.htp.service.impl;
 import java.util.List;
 
 import by.htp.bean.News;
-import by.htp.dao.DAOException;
 import by.htp.dao.DAOProvider;
 import by.htp.dao.NewsDAO;
+import by.htp.dao.exception.DAOException;
 import by.htp.service.NewsService;
-import by.htp.service.ServiceException;
+import by.htp.service.exception.NewsException;
+import by.htp.service.exception.ServiceException;
 import by.htp.service.validation.NewsModifyValidator;
 import by.htp.service.validation.ValidationProvider;
 
@@ -48,7 +49,7 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public boolean editNews(News news) throws ServiceException {
+	public boolean editNews(News news) throws ServiceException, NewsException {
 
 		DAOProvider provider = DAOProvider.getInstance();
 		NewsDAO newsDAO = provider.getNewsdao();
@@ -63,7 +64,7 @@ public class NewsServiceImpl implements NewsService {
 				throw new ServiceException(e);
 			}
 		} else {
-			throw new ServiceException("News wasn't saved");
+			throw new NewsException("News wasn't saved");
 		}
 	}
 
@@ -86,7 +87,7 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public boolean insertNews(News news) throws ServiceException {
+	public boolean insertNews(News news) throws ServiceException, NewsException {
 
 		DAOProvider provider = DAOProvider.getInstance();
 		NewsDAO newsDAO = provider.getNewsdao();
@@ -101,7 +102,7 @@ public class NewsServiceImpl implements NewsService {
 				throw new ServiceException(e);
 			}
 		} else {
-			throw new ServiceException("News wasn't saved");
+			throw new NewsException("News wasn't saved");
 		}
 	}
 }

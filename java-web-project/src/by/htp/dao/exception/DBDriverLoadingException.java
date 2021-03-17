@@ -1,4 +1,4 @@
-package by.htp.dao;
+package by.htp.dao.exception;
 
 public class DBDriverLoadingException extends RuntimeException {
 

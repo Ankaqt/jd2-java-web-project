@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.htp.bean.News;
-import by.htp.dao.DAOException;
 import by.htp.dao.NewsDAO;
+import by.htp.dao.exception.DAOException;
 
 import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_ADD_NEWS;
 import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_SELECT_ALL_NEWS;

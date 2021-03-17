@@ -2,11 +2,12 @@ package by.htp.service.impl;
 
 import by.htp.bean.User;
 import by.htp.bean.RegistrationInfo;
-import by.htp.dao.DAOException;
 import by.htp.dao.DAOProvider;
 import by.htp.dao.UserDAO;
-import by.htp.service.ServiceException;
+import by.htp.dao.exception.DAOException;
 import by.htp.service.UserService;
+import by.htp.service.exception.ServiceException;
+import by.htp.service.exception.UserException;
 import by.htp.service.validation.LoginationValidator;
 import by.htp.service.validation.RegistrationValidator;
 import by.htp.service.validation.ValidationProvider;
@@ -14,7 +15,7 @@ import by.htp.service.validation.ValidationProvider;
 public class UserServiceImpl implements UserService {
 
 	@Override
-	public User authorization(String name, String password) throws ServiceException {
+	public User authorization(String name, String password) throws ServiceException, UserException {
 
 		DAOProvider provider = DAOProvider.getInstance();
 		UserDAO userDAO = provider.getUserdao();
@@ -22,7 +23,7 @@ public class UserServiceImpl implements UserService {
 		ValidationProvider validationProvider = ValidationProvider.getInstance();
 		LoginationValidator loginationValidator = validationProvider.getLoginValidator();
 
-		User user ;
+		User user;
 
 		if (loginationValidator.checkLogination(name, password)) {
 			try {
@@ -31,12 +32,12 @@ public class UserServiceImpl implements UserService {
 				throw new ServiceException("dao error", e);
 			}
 		} else {
-			throw new ServiceException("user didn't login");
-		}	
+			throw new UserException("user didn't login");
+		}
 	}
 
 	@Override
-	public boolean registrate(RegistrationInfo registrationInfo) throws ServiceException {
+	public boolean registrate(RegistrationInfo registrationInfo) throws ServiceException, UserException {
 
 		DAOProvider provider = DAOProvider.getInstance();
 		UserDAO userDAO = provider.getUserdao();
@@ -52,7 +53,7 @@ public class UserServiceImpl implements UserService {
 			}
 
 		} else {
-			throw new ServiceException("user didn't registrate");
+			throw new UserException("user didn't registrate");
 		}
 
 	}

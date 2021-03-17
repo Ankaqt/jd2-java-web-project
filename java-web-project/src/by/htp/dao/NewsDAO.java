@@ -3,6 +3,7 @@ package by.htp.dao;
 import java.util.List;
 
 import by.htp.bean.News;
+import by.htp.dao.exception.DAOException;
 
 public interface NewsDAO {
 
