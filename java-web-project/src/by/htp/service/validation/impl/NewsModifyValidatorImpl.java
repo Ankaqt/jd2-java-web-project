@@ -12,14 +12,15 @@ public class NewsModifyValidatorImpl implements NewsModifyValidator {
 		String brief = news.getBrief();
 		String content = news.getContent();
 
-		boolean isAnyParamsEqNull = title == null || "".equals(title) || brief == null || "".equals(brief)
+		boolean isAnyParamEqNull = title == null || "".equals(title) || brief == null || "".equals(brief)
 				|| content == null || "".equals(content);
 
-		if (isAnyParamsEqNull) {
+		if (isAnyParamEqNull) {
 			return false;
 		}
 
-		boolean check = title.length() < 90 || brief.length() < 400 || content.length() < 10000;
+		boolean check = title.length() < 90 && title.length() > 1 && brief.length() < 400 && brief.length() > 1
+				&& content.length() < 10000 && content.length() > 1;
 
 		return check;
 	}

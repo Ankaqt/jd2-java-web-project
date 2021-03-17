@@ -16,9 +16,9 @@ public class LoginationValidatorImpl implements LoginationValidator {
 		Matcher matcherUsername = patternUsername.matcher(username);
 		Matcher matcherPassword = patternPassword.matcher(password);
 
-		boolean isAnyParamsEqNull = username == null || "".equals(username) || password == null || "".equals(password);
+		boolean isAnyParamEqNull = username == null || "".equals(username) || password == null || "".equals(password);
 
-		if (isAnyParamsEqNull) {
+		if (isAnyParamEqNull) {
 			return false;
 		}
 

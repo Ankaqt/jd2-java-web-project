@@ -30,16 +30,23 @@
 					alt="Surfhome logo" src="css/img/pngwing.png" width="183px"
 					height="143"></a>
 			</div>
-			<ul class="links">
-				<li><a href="#">${home_label}</a></li>
-				<li><a href="#">${products_label}</a></li>
-				<li><a href="#">${surfboars_label}</a></li>
-				<li><a href="#">${surfaccessories_label}</a></li>
-				<li><a href="#">${sale_label}</a></li>
-				<li><a href="Controller?command=gotoaboutpage">${about_label}</a></li>
-				<li><a href="#">${contact_label}</a></li>
-				<li><a href="Controller?command=gotosigninpage">${login_label}</a></li>
-			</ul>
+			<div class="menu-wrap">
+				<ul>
+					<li><a href="#">${home_label}</a></li>
+					<li><a href="#">${products_label}</a></li>
+					<li><a href="#">${surfboars_label}</a></li>
+					<li><a href="#">${surfaccessories_label}</a></li>
+					<li><a href="#">${sale_label}</a></li>
+					<li><a href="Controller?command=gotoaboutpage">${about_label}</a></li>
+					<li><a href="#">${contact_label}</a></li>
+					<li><a href="Controller?command=gotosigninpage">${profile_label}</a>
+						<ul>
+							<li><a href="#">Sign in</a></li>
+							<li><a href="#">Sign out</a></li>
+						</ul></li>
+					<li><a href="#">Cart</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<main>
@@ -118,7 +125,8 @@
 			</div>
 		</div>
 	</footer>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="./js/main.js"></script>
 </body>
 </html>

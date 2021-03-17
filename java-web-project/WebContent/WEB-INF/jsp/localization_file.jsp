@@ -17,6 +17,8 @@
 <fmt:message bundle="${loc}" key="local.label.about" var="about_label" />
 <fmt:message bundle="${loc}" key="local.label.contacts"
 	var="contact_label" />
+	<fmt:message bundle="${loc}" key="local.label.profile"
+	var="profile_label" />
 <fmt:message bundle="${loc}" key="local.label.login" var="login_label" />
 <fmt:message bundle="${loc}" key="local.label.logout" var="logout_label" />
 

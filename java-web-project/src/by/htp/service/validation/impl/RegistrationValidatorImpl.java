@@ -26,10 +26,10 @@ public class RegistrationValidatorImpl implements RegistrationValidator {
 		Matcher matcherEmail = patternEmail.matcher(email);
 		Matcher matcherPhone = patternPhone.matcher(phone);
 
-		boolean isAnyParamsEqNull = username == null || "".equals(username) || password == null || "".equals(password)
+		boolean isAnyParamEqNull = username == null || "".equals(username) || password == null || "".equals(password)
 				|| email == null || "".equals(email) || phone == null || "".equals(phone);
 
-		if (isAnyParamsEqNull) {
+		if (isAnyParamEqNull) {
 			return false;
 		}
 
