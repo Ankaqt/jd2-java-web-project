@@ -58,7 +58,6 @@ public class NewsServiceImpl implements NewsService {
 
 		if (newsModifyValidator.checkNewsModify(news)) {
 			try {
-
 				return newsDAO.editNews(news);
 			} catch (DAOException e) {
 				throw new ServiceException(e);

@@ -19,7 +19,7 @@ public class NewsModifyValidatorImpl implements NewsModifyValidator {
 			return false;
 		}
 
-		boolean check = title.length() > 90 || brief.length() > 400 || content.length() > 10000;
+		boolean check = title.length() < 90 || brief.length() < 400 || content.length() < 10000;
 
 		return check;
 	}

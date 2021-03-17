@@ -46,7 +46,7 @@
 	</div>
 	<main>
 		<div class="image">
-			<img alt="" src="css/img/photo3.jpg" width="1481.5px" height="600">
+			<img alt="" src="css/img/photo3.jpg" width=100% height="550">
 			<h2>
 				<span>ABOUT US</span>
 			</h2>

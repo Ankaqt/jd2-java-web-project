@@ -10,7 +10,7 @@ function checkScroll() {
 	let wrap = $('.wrap');
 	let wrapHeight = wrap.height();
 
-	if ($(this).scrollTop() > 1) {
+	if ($(this).scrollTop() > 0) {
 		wrap.addClass('wrap_fixed');
 		$('body').css({
 			'paddingTop': wrapHeight + 'px'

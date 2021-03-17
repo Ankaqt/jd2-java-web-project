@@ -13,6 +13,7 @@ body {
 .wrap {
 	margin: 10 auto;
 	width: 100%;
+	z-index: 1000;
 }
 
 .wrap_fixed {
@@ -47,10 +48,8 @@ body {
 }
 
 .nav {
-	background: rgb(255, 255, 255);
-	background: linear-gradient(90deg, rgba(255, 255, 255, 0.7351891440169818)
-		0%, rgba(255, 255, 255, 0.9592787798713235) 100%,
-		rgba(254, 254, 254, 0.9760855025603992) 100%);
+	background: rgb(255,255,255);
+	background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
 	height: 125px;
 	border-style: solid;
 	border-width: 0px 0px 0.5px;
@@ -191,6 +190,7 @@ footer {
 	margin: auto;
 	padding: 10px 0;
 	height: 150px;
+	clear: both;
 }
 
 footer h3 {

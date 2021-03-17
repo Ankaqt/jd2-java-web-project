@@ -44,7 +44,7 @@
 	</div>
 	<main>
 		<div class="image">
-			<img alt="" src="css/img/photo2.jpg" width="1481.5px" height="600">
+			<img alt="" src="css/img/photo2.jpg" width=100% height="550">
 			<h2>
 				<span>If you're having a bad day, catch a wave</span>
 			</h2>
