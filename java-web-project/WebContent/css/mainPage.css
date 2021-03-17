@@ -8,6 +8,13 @@ body {
 
 .wrap {
 	margin: 10 auto;
+	width: 100%;
+}
+
+.wrap_fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
 .header {
@@ -36,10 +43,8 @@ body {
 }
 
 .nav {
-	background: rgb(255, 255, 255);
-	background: linear-gradient(90deg, rgba(255, 255, 255, 0.7351891440169818)
-		0%, rgba(255, 255, 255, 0.9592787798713235) 100%,
-		rgba(254, 254, 254, 0.9760855025603992) 100%);
+	background: rgb(255,255,255);
+	background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
 	height: 125px;
 	border-style: solid;
 	border-width: 0px 0px 0.5px;
@@ -93,18 +98,18 @@ hr {
 
 h2 {
 	position: absolute;
-	top: 200px;
+	top: 300px;
 	right: 0;
 	width: 100%;
 }
 
 h2 span {
-	font-size: 44px;
+	font-size: 55px;
 	color: white;
-	font: bold 24px/45px Helvetica, Sans-Serif;
+	font: bold 28px/48px 'Lato', Sans-Serif;
 	letter-spacing: -1px;
 	background: rgb(0, 0, 0);
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(0, 0, 0, 0.6);
 	padding: 10px;
 }
 
@@ -130,6 +135,24 @@ h2 span {
 	letter-spacing: -1px;
 	background: #b0b0ff;
 	padding: 8px;
+}
+
+.text, .info {
+	font-family: 'Lato', Calibri, Ariel, sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	color: #69727b;
+}
+
+.text {
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.info {
+	margin-right: 5%;
+	margin-left: 5%;
 }
 
 .read {

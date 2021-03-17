@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="css/signInPage.css">
+<link rel="stylesheet" href="css/mainPage.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -118,5 +118,7 @@
 			</div>
 		</div>
 	</footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="./js/main.js"></script>
 </body>
 </html>

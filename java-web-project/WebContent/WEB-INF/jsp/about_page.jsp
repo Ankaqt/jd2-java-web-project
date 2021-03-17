@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="css/signInPage.css">
+<link rel="stylesheet" href="css/mainPage.css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -51,8 +51,8 @@
 				<span>ABOUT US</span>
 			</h2>
 		</div>
-		<div class="info">
-			<h1 class="title">THE OCEAN AWAITS</h1>
+		<div class="info" >
+			<h1 class="title"style="text-align: center;">THE OCEAN AWAITS</h1>
 			Welcome to <strong>SURFHOME</strong>, Australia’s largest surfboard
 			and stand up paddleboard retailer.
 			<p>From the moment you paddle out, to your very first wave, there
@@ -109,5 +109,7 @@
 			</div>
 		</div>
 	</footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="./js/main.js"></script>
 </body>
 </html>

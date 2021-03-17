@@ -1,8 +1,7 @@
 @charset "UTF-8";
 
 body {
-	background-image:
-		url("./img/whale_PNG.png");
+	background-image: url("./img/whale_PNG.png");
 	background-repeat: no-repeat;
 	background-position: top center !important;
 	margin: 0;
@@ -12,6 +11,13 @@ body {
 
 .wrap {
 	margin: 10 auto;
+	width: 100%;
+}
+
+.wrap_fixed {
+	position: fixed;
+	left: 0;
+	top: 0;
 }
 
 .header {
@@ -41,9 +47,8 @@ body {
 
 .nav {
 	background: rgb(255, 255, 255);
-	background: linear-gradient(90deg, rgba(255, 255, 255, 0.7351891440169818)
-		0%, rgba(255, 255, 255, 0.9592787798713235) 100%,
-		rgba(254, 254, 254, 0.9760855025603992) 100%);
+	background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 0.9923319669664741) 100%);
 	height: 125px;
 	border-style: solid;
 	border-width: 0px 0px 0.5px;
@@ -74,6 +79,10 @@ body {
 
 .nav li a:hover {
 	text-decoration: underline;
+}
+
+.main {
+	min-height: 100%;
 }
 
 .form {
@@ -192,77 +201,6 @@ input[type=text], input[type=password] {
 	text-align: center;
 }
 
-h2 {
-	position: absolute;
-	top: 300px;
-	right: 0;
-	width: 100%;
-}
-
-h2 span {
-	font-size: 55px;
-	color: white;
-	font: bold 28px/48px 'Lato', Sans-Serif;
-	letter-spacing: -1px;
-	background: rgb(0, 0, 0);
-	background: rgba(0, 0, 0, 0.6);
-	padding: 10px;
-}
-
-.title {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
-	font-size: 26px;
-	font-weight: 400;
-	color: #3e3e3e;
-	text-align: center;
-}
-
-.text, .info {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
-	font-size: 18px;
-	font-weight: 400;
-	color: #69727b;
-}
-
-.text {
-	text-align: center;
-	margin-left: 10%;
-	margin-right: 10%;
-}
-
-.info {
-	margin-right: 5%;
-	margin-left: 5%;
-}
-
-hr {
-	display: block;
-	unicode-bidi: isolate;
-	margin-block-start: 0.5em;
-	margin-block-end: 0.5em;
-	margin-inline-start: auto;
-	margin-inline-end: auto;
-	overflow: hidden;
-	border-style: inset;
-	border-width: 1px;
-}
-
-.news {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
-	font-size: 18px;
-	font-weight: 400;
-	color: #69727b;
-	margin-right: 10%;
-	margin-left: 5%;}
-
-.title1 {
-	color: white;
-	font: bold 30px/48px 'Lato', Sans-Serif;
-	letter-spacing: -1px;
-	background: #b0b0ff;
-	padding: 8px;
-}
-
 footer {
 	background: #494949;
 	color: #dbdbdb;
@@ -274,6 +212,7 @@ footer {
 	margin: auto;
 	padding: 10px 0;
 	height: 150px;
+	clear: both;
 }
 
 footer h3 {
