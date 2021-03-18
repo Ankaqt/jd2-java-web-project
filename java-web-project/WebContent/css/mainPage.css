@@ -24,7 +24,7 @@ body {
 }
 
 .local form {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
+	font-family: Ariel, sans-serif;
 	color: white;
 	text-decoration: none;
 	color: white;
@@ -58,9 +58,10 @@ body {
 }
 
 .nav li {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
+	font-family:  Ariel, sans-serif;
 	font-weight: 100;
 	display: inline-block;
+	font-size: 15px;
 }
 
 .nav li a {
@@ -68,8 +69,8 @@ body {
 	padding: 10px;
 	color: #3e3e3e;
 	text-transform: uppercase;
-	font-weight: bold;
-	margin-right: 15px;
+	font-weight: normal;
+	margin-right: 12px;
 	line-height: 23px;
 	display: inline-block;
 }
@@ -100,12 +101,13 @@ body {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 100px;
+	width: 140px;
+	z-index: 1000;
 }
 
 .menu-wrap ul ul li a {
 	display: block;
-	width: 100px;
+	width: 140px;
 	align-items: center;
 	margin: 8%;
 }
@@ -115,7 +117,7 @@ body {
 }
 
 h1 {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
+	font-family: Ariel, sans-serif;
 	font-size: 32px;
 	font-weight: 400;
 	color: #4e4e4e;
@@ -144,7 +146,7 @@ h2 {
 h2 span {
 	font-size: 55px;
 	color: white;
-	font: bold 28px/48px 'Lato', Sans-Serif;
+	font: bold 28px/48px Ariel, sans-serif;
 	letter-spacing: -1px;
 	background: rgb(0, 0, 0);
 	background: rgba(0, 0, 0, 0.6);
@@ -152,7 +154,7 @@ h2 span {
 }
 
 .news {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
+	font-family:  Ariel, sans-serif;
 	font-size: 18px;
 	font-weight: 400;
 	color: #69727b;
@@ -161,7 +163,7 @@ h2 span {
 }
 
 .title {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
+	font-family: Ariel, sans-serif;
 	font-size: 26px;
 	font-weight: 400;
 	color: #3e3e3e;
@@ -169,14 +171,14 @@ h2 span {
 
 .title1 {
 	color: white;
-	font: bold 30px/48px 'Lato', Sans-Serif;
+	font: bold 30px/48px Ariel, sans-serif;
 	letter-spacing: -1px;
 	background: #b0b0ff;
 	padding: 8px;
 }
 
 .text, .info {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
+	font-family: Ariel, sans-serif;
 	font-size: 18px;
 	font-weight: 400;
 	color: #69727b;
@@ -199,19 +201,19 @@ h2 span {
 	padding: 0.01em 0.1em;
 	text-decoration: none;
 	font-weight: 400;
-	font-size: 22px;
+	font-size: 20px;
 	border-radius: 5px;
 	text-transform: uppercase;
 }
 
 .addNews {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
+	font-family: Ariel, sans-serif;
 	background-color: #0d959f;
 	color: white;
 	padding: 0.01em 0.6em;
 	text-decoration: none;
 	font-weight: 400;
-	font-size: 24px;
+	font-size: 20px;
 	border-radius: 5px;
 	text-transform: uppercase;
 	margin-left: 45%;
@@ -227,7 +229,7 @@ h2 span {
 	padding: 0.01em 0.1em;
 	text-decoration: none;
 	font-weight: 400;
-	font-size: 24px;
+	font-size: 20px;
 	border-radius: 5px;
 	text-transform: uppercase;
 	position: relative;
@@ -239,7 +241,7 @@ h2 span {
 	padding: 0.01em 0.1em;
 	text-decoration: none;
 	font-weight: 400;
-	font-size: 24px;
+	font-size: 20px;
 	border-radius: 5px;
 	text-transform: uppercase;
 }
@@ -259,7 +261,7 @@ h2 span {
 	background-color: #b0b0ff;
 	padding: 0.150em 0.6em;
 	font-weight: 400;
-	font-size: 24px;
+	font-size: 20px;
 	border-radius: 5px;
 	text-transform: uppercase;
 	color: white;
@@ -270,7 +272,7 @@ h2 span {
 	background-color: #d02238;
 	padding: 0.150em 0.6em;
 	font-weight: 400;
-	font-size: 24px;
+	font-size: 20px;
 	border-radius: 5px;
 	text-transform: uppercase;
 	color: white;
@@ -286,7 +288,7 @@ h2 span {
 }
 
 textarea {
-	font: 16px 'Lato', Sans-Serif;
+	font: 16px Ariel, sans-serif;
 	color: #7d7d7d;
 	border-radius: 5px;
 	border: 0.6px solid #dadada;
@@ -297,7 +299,7 @@ textarea {
 footer {
 	background: #494949;
 	color: #dbdbdb;
-	font: 11px 'Lato', Sans-Serif;
+	font: 11px Ariel, sans-serif;
 }
 
 .footer {
@@ -309,7 +311,7 @@ footer {
 }
 
 footer h3 {
-	font: 16px 'Lato', Sans-Serif;
+	font: 16px Ariel, sans-serif;
 	color: #fff;
 	margin: 0 0 9px 0;
 }

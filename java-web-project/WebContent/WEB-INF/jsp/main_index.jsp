@@ -34,15 +34,28 @@
 				<ul>
 					<li><a href="#">${home_label}</a></li>
 					<li><a href="#">${products_label}</a></li>
-					<li><a href="#">${surfboars_label}</a></li>
+					<li><a href="#">${surfboars_label}</a>
+						<ul>
+							<li><a href="#">Longboards</a></li>
+							<li><a href="#">Mid Lengths</a></li>
+							<li><a href="#">Shortboards</a></li>
+							<li><a href="#">Fish</a></li>
+							<li><a href="#">Beginner</a></li>
+						</ul></li>
 					<li><a href="#">${surfaccessories_label}</a></li>
 					<li><a href="#">${sale_label}</a></li>
 					<li><a href="Controller?command=gotoaboutpage">${about_label}</a></li>
 					<li><a href="#">${contact_label}</a></li>
-					<li><a href="Controller?command=gotosigninpage">${profile_label}</a>
+					<li><a href="Controller?command=gotomainpage">${profile_label}</a>
 						<ul>
-							<li><a href="#">Sign in</a></li>
-							<li><a href="#">Sign out</a></li>
+						<c:if test="${sessionScope.user != null}">
+							<li><a href="#">Information</a></li>
+							<li><a href="#">Purchases</a></li>
+							<li><a href="Controller?command=logout">Sign out</a></li>	
+						</c:if>
+						<c:if test="${sessionScope.user == null}">
+							<li><a href="Controller?command=gotosigninpage">Sign in</a></li>
+						</c:if>	
 						</ul></li>
 					<li><a href="#">Cart</a></li>
 				</ul>

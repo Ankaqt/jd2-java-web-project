@@ -27,7 +27,7 @@ body {
 }
 
 .local form {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
+	font-family: Ariel, sans-serif;
 	color: white;
 	text-decoration: none;
 	color: white;
@@ -47,8 +47,9 @@ body {
 }
 
 .nav {
-	background: rgb(255,255,255);
-	background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 100%);
+	background: rgb(255, 255, 255);
+	background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 100%);
 	height: 125px;
 	border-style: solid;
 	border-width: 0px 0px 0.5px;
@@ -57,23 +58,13 @@ body {
 
 .nav ul {
 	float: right;
-	text-align: center;
 }
 
-.menu-wrap ul li a {
- 	float:left; 
-	width:150px; 
-	display:block; 
-	text-align:center; 
-	color:#FFF; 
-	text-decoration:none; 
-	text-transform:uppercase;
-     }
-
 .nav li {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
-	font-weight: 400;
+	font-family: Ariel, sans-serif;
+	font-weight: 100;
 	display: inline-block;
+	font-size: 15px;
 }
 
 .nav li a {
@@ -81,39 +72,76 @@ body {
 	padding: 10px;
 	color: #3e3e3e;
 	text-transform: uppercase;
-	font-weight: bold;
-	margin-right: 15px;
+	font-weight: normal;
+	margin-right: 12px;
 	line-height: 23px;
 	display: inline-block;
 }
 
 .nav li a:hover {
 	text-decoration: underline;
+	color: #c1e1f4;
 }
 
-.main {
-	min-height: 100%;
+.menu-wrap ul {
+	list-style: none;
+}
+
+.menu-wrap ul li a:hover {
+	display: block;
+}
+
+.menu-wrap ul li:hover ul {
+	display: flex;
+}
+
+.menu-wrap ul ul {
+	display: none;
+	list-style: none;
+	position: absolute;
+	background-color: #ffffff;
+	padding: 0;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 140px;
+	z-index: 1000;
+}
+
+.menu-wrap ul ul li a {
+	display: block;
+	width: 140px;
+	align-items: center;
+	margin: 8%;
+}
+
+.menu-wrap ul ul li a:hover {
+	color: #c1e1f4;
 }
 
 .form {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
-	font-weight: 400;
+	font-family: Ariel, sans-serif;
+	font-weight: 300;
 	width: 350px;
 	position: relative;
 	margin: 100px auto 60px;
 	padding: 10px;
 	overflow: hidden;
-	background: linear-gradient(90deg, rgba(253, 253, 255, 1) 0%,
-		rgba(255, 255, 255, 0.9592787798713235) 100%,
-		rgba(254, 254, 254, 0.9760855025603992) 100%);
+	background: rgb(255, 255, 255); background : linear-gradient( 0deg,
+	rgba( 255, 255, 255, 1) 0%, rgba( 255, 255, 255, 0.9979342078628326)
+	100%);
 	color: #7e7975;
-	box-shadow: 0 0px 0px 8px rgba(240, 240, 240, 0.4);
+	border: solid;
+	border-width: 1px;
+	border-color: #cccccc;
+	background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 0.9979342078628326) 100%);
 }
 
 .form h1 {
 	text-align: center;
-	font-weight: 400;
-	font-size: 40px;
+	font-weight: 300;
+	font-size: 36px;
 	color: #dddddd;
 	padding-bottom: 3px;
 	border-bottom: 3px solid #ffffff;
@@ -148,11 +176,11 @@ body {
 	padding: 0 0 5px;
 	text-transform: uppercase;
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 input[type=text], input[type=password] {
-	font-family: 'Lato', Calibri, Arial, sans-serif;
+	font-family: Arial, sans-serif;
 	color: #c7c7c7;
 	width: 85%;
 	padding: 10px;
@@ -170,8 +198,8 @@ input[type=text], input[type=password] {
 	box-shadow: inset 0 1px rgba(255, 255, 255, 0.3);
 	border-radius: 10px;
 	cursor: pointer;
-	font-family: 'Lato', Calibri, Arial, sans-serif;
-	font-size: 20px;
+	font-family: Arial, sans-serif;
+	font-size: 18px;
 	line-height: 37px;
 	text-align: center;
 	font-weight: bold;
@@ -205,16 +233,16 @@ input[type=text], input[type=password] {
 }
 
 .message {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
-	font-size: 16px;
-	color: #4c4c4c;
+	font-family: Ariel, sans-serif;
+	font-size: 14px;
+	color: #b70000;
 	text-align: center;
 }
 
 footer {
 	background: #494949;
 	color: #dbdbdb;
-	font: 11px 'Lato', Sans-Serif;
+	font: 11px Ariel, sans-serif;
 }
 
 .footer {
@@ -226,7 +254,7 @@ footer {
 }
 
 footer h3 {
-	font: 16px 'Lato', Sans-Serif;
+	font: 16px Ariel, sans-serif;
 	color: #fff;
 	margin: 0 0 9px 0;
 }

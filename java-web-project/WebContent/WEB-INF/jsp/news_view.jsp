@@ -30,16 +30,36 @@
 					alt="Surfhome logo" src="css/img/pngwing.png" width="183px"
 					height="143"></a>
 			</div>
-			<ul class="links">
-				<li><a href="#">${home_label}</a></li>
-				<li><a href="#">${products_label}</a></li>
-				<li><a href="#">${surfboars_label}</a></li>
-				<li><a href="#">${surfaccessories_label}</a></li>
-				<li><a href="#">${sale_label}</a></li>
-				<li><a href="Controller?command=gotoaboutpage">${about_label}</a></li>
-				<li><a href="#">${contact_label}</a></li>
-				<li><a href="Controller?command=logout">${logout_label}</a></li>
-			</ul>
+			<div class="menu-wrap">
+				<ul>
+					<li><a href="#">${home_label}</a></li>
+					<li><a href="#">${products_label}</a></li>
+					<li><a href="#">${surfboars_label}</a>
+						<ul>
+							<li><a href="#">Longboards</a></li>
+							<li><a href="#">Mid Lengths</a></li>
+							<li><a href="#">Shortboards</a></li>
+							<li><a href="#">Fish</a></li>
+							<li><a href="#">Beginner</a></li>
+						</ul></li>
+					<li><a href="#">${surfaccessories_label}</a></li>
+					<li><a href="#">${sale_label}</a></li>
+					<li><a href="Controller?command=gotoaboutpage">${about_label}</a></li>
+					<li><a href="#">${contact_label}</a></li>
+					<li><a href="Controller?command=gotomainpage">${profile_label}</a>
+						<ul>
+							<c:if test="${sessionScope.user != null}">
+								<li><a href="#">Information</a></li>
+								<li><a href="#">Purchases</a></li>
+								<li><a href="Controller?command=logout">Sign out</a></li>
+							</c:if>
+							<c:if test="${sessionScope.user == null}">
+								<li><a href="Controller?command=gotosigninpage">Sign in</a></li>
+							</c:if>
+						</ul></li>
+					<li><a href="#">Cart</a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<main>
@@ -109,7 +129,8 @@
 			</div>
 		</div>
 	</footer>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="./js/main.js"></script>
 </body>
 </html>
