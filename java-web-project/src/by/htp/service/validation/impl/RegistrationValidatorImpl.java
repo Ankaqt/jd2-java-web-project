@@ -8,7 +8,7 @@ import by.htp.service.validation.RegistrationValidator;
 
 public class RegistrationValidatorImpl implements RegistrationValidator {
 
-	private Pattern patternUsername = Pattern.compile("[a-z0-9]{6,12}");
+	private Pattern patternUsername = Pattern.compile("[a-z0-9]{4,12}");
 	private Pattern patternPassword = Pattern.compile("[a-z0-9]{6,12}");
 	private Pattern patternEmail = Pattern.compile("^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{2,6})$");
 	private Pattern patternPhone = Pattern.compile("^\\d{7}$");

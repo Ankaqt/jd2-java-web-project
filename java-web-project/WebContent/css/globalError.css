@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
 .error {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
+	font-family: Ariel, sans-serif;
 	font-size: 24px;
 	text-align: center;
 }
 
 a {
-	font-family: 'Lato', Calibri, Ariel, sans-serif;
+	font-family: Ariel, sans-serif;
 	background-color: #b0b0ff;
 	color: white;
 	padding: 0.01em 0.1em;

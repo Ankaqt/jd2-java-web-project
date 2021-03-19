@@ -11,16 +11,31 @@
 	var="products_label" />
 <fmt:message bundle="${loc}" key="local.label.surfboars"
 	var="surfboars_label" />
+<fmt:message bundle="${loc}" key="local.label.longboards"
+	var="longboards_label" />
+<fmt:message bundle="${loc}" key="local.label.midlengths"
+	var="midlengths_label" />
+<fmt:message bundle="${loc}" key="local.label.shortboards"
+	var="shortboards_label" />
+<fmt:message bundle="${loc}" key="local.label.fish"
+	var="fish_label" />
+<fmt:message bundle="${loc}" key="local.label.beginner"
+	var="beginner_label" />	
 <fmt:message bundle="${loc}" key="local.label.surfaccessories"
 	var="surfaccessories_label" />
 <fmt:message bundle="${loc}" key="local.label.sale" var="sale_label" />
 <fmt:message bundle="${loc}" key="local.label.about" var="about_label" />
 <fmt:message bundle="${loc}" key="local.label.contacts"
 	var="contact_label" />
-	<fmt:message bundle="${loc}" key="local.label.profile"
+<fmt:message bundle="${loc}" key="local.label.profile"
 	var="profile_label" />
+<fmt:message bundle="${loc}" key="local.label.information"
+	var="information_label" />
+<fmt:message bundle="${loc}" key="local.label.purchases"
+	var="purchases_label" />
 <fmt:message bundle="${loc}" key="local.label.login" var="login_label" />
 <fmt:message bundle="${loc}" key="local.label.logout" var="logout_label" />
+<fmt:message bundle="${loc}" key="local.label.cart" var="cart_label" />
 
 <fmt:message bundle="${loc}" key="local.locbutton.login" var="login_button" />
 <fmt:message bundle="${loc}" key="local.locbutton.registration" var="registration_button" />

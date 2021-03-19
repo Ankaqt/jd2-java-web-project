@@ -41,7 +41,7 @@ public class SaveNewUser implements Command {
 
 		} catch (UserException e) {
 			response.sendRedirect(
-					"Controller?command=registration&message=You entered incorrect data");
+					"Controller?command=registration&message=You entered incorrect registration data");
 		}
 
 	}

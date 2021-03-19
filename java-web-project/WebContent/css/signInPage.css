@@ -119,6 +119,12 @@ body {
 	color: #c1e1f4;
 }
 
+.main {
+	box-sizing: border-box;
+	min-height: 100%;
+	padding-bottom: 90px;
+}
+
 .form {
 	font-family: Ariel, sans-serif;
 	font-weight: 300;
@@ -127,9 +133,9 @@ body {
 	margin: 100px auto 60px;
 	padding: 10px;
 	overflow: hidden;
-	background: rgb(255, 255, 255); background : linear-gradient( 0deg,
-	rgba( 255, 255, 255, 1) 0%, rgba( 255, 255, 255, 0.9979342078628326)
-	100%);
+	background: rgb(255, 255, 255);
+	background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 0.9979342078628326) 100%);
 	color: #7e7975;
 	border: solid;
 	border-width: 1px;
@@ -250,7 +256,7 @@ footer {
 	margin: auto;
 	padding: 10px 0;
 	height: 150px;
-	clear: both;
+	margin-top: 150px;
 }
 
 footer h3 {
