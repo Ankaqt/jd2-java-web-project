@@ -58,7 +58,7 @@ body {
 }
 
 .nav li {
-	font-family:  Ariel, sans-serif;
+	font-family: Ariel, sans-serif;
 	font-weight: 100;
 	display: inline-block;
 	font-size: 15px;
@@ -116,6 +116,12 @@ body {
 	color: #c1e1f4;
 }
 
+.main {
+	box-sizing: border-box;
+	min-height: 100%;
+	padding-bottom: 160px;
+}
+
 h1 {
 	font-family: Ariel, sans-serif;
 	font-size: 32px;
@@ -154,7 +160,7 @@ h2 span {
 }
 
 .news {
-	font-family:  Ariel, sans-serif;
+	font-family: Ariel, sans-serif;
 	font-size: 18px;
 	font-weight: 400;
 	color: #69727b;
@@ -307,7 +313,7 @@ footer {
 	margin: auto;
 	padding: 10px 0;
 	height: 150px;
-	clear: both;
+	margin-top: 150px;
 }
 
 footer h3 {

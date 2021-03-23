@@ -119,6 +119,12 @@ body {
 	color: #c1e1f4;
 }
 
+.main {
+	box-sizing: border-box;
+	min-height: 100%;
+	padding-bottom: 160px;
+}
+
 .form {
 	font-family: Ariel, sans-serif;
 	font-weight: 300;
@@ -230,7 +236,7 @@ footer {
 	margin: auto;
 	padding: 10px 0;
 	height: 150px;
-	clear: both;
+	margin-top: 150px;
 }
 
 footer h3 {
