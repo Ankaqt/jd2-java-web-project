@@ -23,8 +23,4 @@ public final class CommandConstant {
 	public static final String ATTR_ERROR = "error";
 	public static final String ATTR_GLOBALERROR = "globalerror";
 	
-	
-	
-	
-
 }
