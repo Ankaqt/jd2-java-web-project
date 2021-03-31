@@ -9,6 +9,7 @@ import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.NClob;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
 import java.sql.SQLWarning;
@@ -22,6 +23,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 import by.htp.dao.exception.ConnectionPoolException;
+import by.htp.dao.exception.DAOException;
 
 public final class ConnectionPool {
 
@@ -96,6 +98,40 @@ public final class ConnectionPool {
 		return connection;
 	}
 
+	public void closeConnection(Connection con, Statement st, ResultSet rs) throws DAOException {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+
+		try {
+			st.close();
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+
+		try {
+			rs.close();
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+	}
+
+	public void closeConnection(Connection con, Statement st) throws DAOException {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+
+		try {
+			st.close();
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+	}
+
 	private void closeConnectionsQueue(BlockingQueue<Connection> queue) throws SQLException {
 		Connection connection;
 		while ((connection = queue.poll()) != null) {
@@ -143,6 +179,10 @@ public final class ConnectionPool {
 
 			if (connection.isReadOnly()) {
 				connection.setReadOnly(false);
+			}
+
+			if (!connection.getAutoCommit()) {
+				connection.setAutoCommit(true);
 			}
 
 			if (!usedConnections.remove(this)) {

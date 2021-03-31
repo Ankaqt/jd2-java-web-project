@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import by.htp.bean.User;
 import by.htp.bean.RegistrationInfo;
 import by.htp.dao.UserDAO;
+import by.htp.dao.exception.ConnectionPoolException;
 import by.htp.dao.exception.DAOException;
+import by.htp.dao.impl.connection_pool.ConnectionPool;
 
 import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_CREATE_USER;
 import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_SELECT_USER;
@@ -22,44 +24,16 @@ public class SQLUserDAO implements UserDAO {
 	private static final String USER_PHONE = "userinfo_phone";
 	private static final String USER_ROLE = "userinfo_role";
 
-	private String dbUrl = "jdbc:mysql://localhost:3307/news_management?useSSL=false&serverTimezone=UTC";
-	private String dbUname = "root";
-	private String password = "okmijn19731973";
-
-	static {
-		MySQLDriverLoader.getInstance();
-	}
-
-	public Connection getConnection() throws DAOException {
-		Connection con = null;
-		try {
-			con = DriverManager.getConnection(dbUrl, dbUname, password);
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		}
-		return con;
-
-	}
-
-	public void closeConnection(Connection con) throws DAOException {
-		try {
-			if (con != null && !con.isClosed()) {
-				con.close();
-			}
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		}
-	}
+	ConnectionPool connectionPool = ConnectionPool.getInstance();
 
 	@Override
 	public User authorization(String name, String password) throws DAOException {
 		User user = null;
 		PreparedStatement statement = null;
-
-		Connection con = getConnection();
+		Connection con = null;
 
 		try {
-
+			con = connectionPool.takeConnection();
 			statement = con.prepareStatement(SQL_QUERY_SELECT_USER);
 			statement.setString(1, name);
 			statement.setString(2, password);
@@ -76,10 +50,10 @@ public class SQLUserDAO implements UserDAO {
 
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException | ConnectionPoolException e) {
 			throw new DAOException(e);
 		} finally {
-			closeConnection(con);
+			connectionPool.closeConnection(con, statement);
 		}
 		return user;
 	}
@@ -89,10 +63,10 @@ public class SQLUserDAO implements UserDAO {
 		boolean insert;
 		PreparedStatement statement = null;
 
-		Connection con = getConnection();
+		Connection con = null;
 
 		try {
-
+			con = connectionPool.takeConnection();
 			statement = con.prepareStatement(SQL_QUERY_CREATE_USER);
 
 			statement.setString(1, registrationInfo.getName());
@@ -108,10 +82,10 @@ public class SQLUserDAO implements UserDAO {
 				insert = false;
 				System.out.println("FALSE");
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ConnectionPoolException e) {
 			throw new DAOException(e);
 		} finally {
-			closeConnection(con);
+			connectionPool.closeConnection(con, statement);
 		}
 		return insert;
 	}

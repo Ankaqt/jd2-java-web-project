@@ -1,7 +1,6 @@
 package by.htp.dao.impl;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,7 +11,9 @@ import java.util.List;
 
 import by.htp.bean.News;
 import by.htp.dao.NewsDAO;
+import by.htp.dao.exception.ConnectionPoolException;
 import by.htp.dao.exception.DAOException;
+import by.htp.dao.impl.connection_pool.ConnectionPool;
 
 import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_ADD_NEWS;
 import static by.htp.dao.impl.SQLQueryConstant.SQL_QUERY_SELECT_ALL_NEWS;
@@ -28,44 +29,18 @@ public class SQLNewsDAO implements NewsDAO {
 	private static final String NEWS_CONTENT = "news_content";
 	private static final String NEWS_DATE = "news_date";
 
-	private String dbUrl = "jdbc:mysql://localhost:3307/news_management?useSSL=false&serverTimezone=UTC";
-	private String dbUname = "root";
-	private String password = "okmijn19731973";
-
-	static {
-		MySQLDriverLoader.getInstance();
-	}
-
-	public Connection getConnection() throws DAOException {
-		Connection con = null;
-		try {
-			con = DriverManager.getConnection(dbUrl, dbUname, password);
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		}
-		return con;
-
-	}
-
-	public void closeConnection(Connection con) throws DAOException {
-		try {
-			if (con != null && !con.isClosed()) {
-				con.close();
-			}
-		} catch (SQLException e) {
-			throw new DAOException(e);
-		}
-	}
+	ConnectionPool connectionPool = ConnectionPool.getInstance();
 
 	@Override
 	public List<News> takeAll() throws DAOException {
 		List<News> news = null;
 		Statement st = null;
 		ResultSet rs = null;
-
-		Connection con = getConnection();
+		Connection con = null;
 
 		try {
+
+			con = connectionPool.takeConnection();
 
 			st = con.createStatement();
 
@@ -85,10 +60,11 @@ public class SQLNewsDAO implements NewsDAO {
 				news.add(n);
 
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ConnectionPoolException e) {
 			throw new DAOException(e);
+
 		} finally {
-			closeConnection(con);
+			connectionPool.closeConnection(con, st, rs);
 		}
 		return news;
 	}
@@ -98,11 +74,10 @@ public class SQLNewsDAO implements NewsDAO {
 		News news = null;
 		PreparedStatement statement = null;
 		ResultSet rs = null;
-
-		Connection con = getConnection();
+		Connection con = null;
 
 		try {
-
+			con = connectionPool.takeConnection();
 			statement = con.prepareStatement(SQL_QUERY_SELECT_NEWS_BY_ID);
 			statement.setInt(1, id);
 
@@ -116,10 +91,10 @@ public class SQLNewsDAO implements NewsDAO {
 
 				news = new News(id, title, brief, content, date);
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ConnectionPoolException e) {
 			throw new DAOException(e);
 		} finally {
-			closeConnection(con);
+			connectionPool.closeConnection(con, statement, rs);
 		}
 
 		return news;
@@ -130,10 +105,10 @@ public class SQLNewsDAO implements NewsDAO {
 		boolean update;
 		PreparedStatement statement = null;
 
-		Connection con = getConnection();
+		Connection con = null;
 
 		try {
-
+			con = connectionPool.takeConnection();
 			statement = con.prepareStatement(SQL_QUERY_UPDATE_NEWS);
 
 			statement.setString(1, news.getTitle());
@@ -149,10 +124,10 @@ public class SQLNewsDAO implements NewsDAO {
 				update = false;
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException | ConnectionPoolException e) {
 			throw new DAOException(e);
 		} finally {
-			closeConnection(con);
+			connectionPool.closeConnection(con, statement);
 		}
 		return update;
 	}
@@ -163,10 +138,10 @@ public class SQLNewsDAO implements NewsDAO {
 		boolean delete;
 		PreparedStatement statement = null;
 
-		Connection con = getConnection();
+		Connection con = null;
 
 		try {
-
+			con = connectionPool.takeConnection();
 			statement = con.prepareStatement(SQL_QUERY_DELETE_NEWS);
 			statement.setInt(1, news.getId());
 
@@ -178,10 +153,10 @@ public class SQLNewsDAO implements NewsDAO {
 				delete = false;
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException | ConnectionPoolException e) {
 			throw new DAOException(e);
 		} finally {
-			closeConnection(con);
+			connectionPool.closeConnection(con, statement);
 		}
 		return delete;
 	}
@@ -192,10 +167,10 @@ public class SQLNewsDAO implements NewsDAO {
 		boolean insert;
 		PreparedStatement statement = null;
 
-		Connection con = getConnection();
+		Connection con = null;
 
 		try {
-
+			con = connectionPool.takeConnection();
 			statement = con.prepareStatement(SQL_QUERY_ADD_NEWS);
 
 			statement.setString(1, news.getTitle());
@@ -210,10 +185,10 @@ public class SQLNewsDAO implements NewsDAO {
 			} else {
 				insert = false;
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ConnectionPoolException e) {
 			throw new DAOException(e);
 		} finally {
-			closeConnection(con);
+			connectionPool.closeConnection(con, statement);
 		}
 		return insert;
 	}

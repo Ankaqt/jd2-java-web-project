@@ -2,6 +2,7 @@ package by.htp.controller;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import by.htp.controller.command.Command;
 import by.htp.controller.command.CommandProvider;
 
 import static by.htp.controller.command.impl.CommandConstant.*;
+import static by.htp.listener.InitPoolDataListener.*;
 
 public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,6 +38,10 @@ public class Controller extends HttpServlet {
 
 	private void process(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		ServletContext context = getServletContext();
+		
+		context.getAttribute(PARAM_CON);
 
 		String name = request.getParameter(PARAM_COMMAND);
 		Command command = provider.takeCommand(name);
