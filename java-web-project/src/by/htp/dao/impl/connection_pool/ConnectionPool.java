@@ -27,7 +27,7 @@ import by.htp.dao.exception.DAOException;
 
 public final class ConnectionPool {
 
-	private static ConnectionPool instance = new ConnectionPool();
+	private static final ConnectionPool instance = new ConnectionPool();
 
 	private BlockingQueue<Connection> availableConnections;
 	private BlockingQueue<Connection> usedConnections;
@@ -53,8 +53,6 @@ public final class ConnectionPool {
 	}
 
 	public static ConnectionPool getInstance() {
-		if (instance == null)
-			instance = new ConnectionPool();
 		return instance;
 	}
 
